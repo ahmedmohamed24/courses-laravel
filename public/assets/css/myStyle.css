@@ -1,0 +1,34 @@
+.equal {
+    display: flex;
+    display: -webkit-flex;
+    flex-wrap: wrap;
+  }
+.h-100{
+    height: 100% !important;
+    border: 1px solid #e4e7ff;
+    border-top: 0;
+    padding-bottom: 0;
+    /* margin-bottom: 0; */
+    height: auto !important;
+}
+.showLectureImage{
+    display: block !important;
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    right: 20px;
+    bottom: 20px;
+    background-color: rgba(0, 0, 0, 0.6);
+    z-index: 1000;
+}
+.showLectureImage>span{
+    position: fixed;
+    top: 30px;
+    right: 30px;
+    z-index: 10001;
+}
+button#btn-search{
+    outline:none;
+    background-color:transparent;
+    border: 0;
+}

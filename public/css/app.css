@@ -1,0 +1,75 @@
+:root {
+  font-size: 18;
+  --text-logo: "Cairo", sans-serif;
+  --text-primary: "Poppins", sans-serif;
+  --font-golden: #856404;
+  --font-secondary: #6c757d;
+}
+
+@media (max-width: 500px) {
+  :root {
+    font-size: 16;
+  }
+}
+
+@media (max-width: 400px) {
+  :root {
+    font-size: 14;
+  }
+}
+
+@media (min-width: 991px) {
+  .addReviewContainer {
+    width: 50%;
+  }
+}
+
+@media (max-width: 991px) and (min-width: 650px) {
+  .addReviewContainer {
+    width: 75%;
+  }
+}
+
+.addReviewContainer .reviewHeader {
+  font-family: var(--text-logo);
+  font-size: 2rem;
+  color: var(--font-golden);
+  font-weight: 900;
+  letter-spacing: 2px;
+}
+
+.addReviewContainer .reviwerStars {
+  transform: translateX(-20%) rotateY(180deg);
+}
+
+.addReviewContainer .reviwerStars > input {
+  visibility: hidden;
+}
+
+.addReviewContainer .reviwerStars > label {
+  display: block;
+  cursor: pointer;
+  width: 50px;
+  padding: 15px 0;
+}
+
+.addReviewContainer .reviwerStars > label:after {
+  content: url('http://localhost/laravel/courses/public/assets/img/star.svg');
+  position: absolute;
+  display: block;
+  top: 0;
+  opacity: 0.4;
+  font-size: 1.5rem;
+  transition: all 0.5 ease-in-out;
+  text-shadow: 0 2px 5px rgba(0, 0, 0, 0.6);
+  transform: translateY(10px);
+
+}
+
+.addReviewContainer .reviwerStars label:hover::after,
+.addReviewContainer .reviwerStars label:hover ~ label::after,
+.addReviewContainer .reviwerStars input:checked ~ label::after {
+  opacity: 1;
+  font-weight: 900;
+}
+

@@ -1,0 +1,62 @@
+:root{
+    font-size: 18;
+    --text-logo: 'Cairo', sans-serif;
+    --text-primary:'Poppins', sans-serif;
+    --font-golden:#856404;
+    --font-secondary:#6c757d;
+    @media (max-width:500px) {
+        font-size: 16;
+    }
+    @media (max-width:400px) {
+        font-size: 14;
+    }
+}
+.addReviewContainer{
+    @media (min-width:991px) {
+        width: 50%;
+    }
+    @media (max-width:991px) and (min-width:650px) {
+        width: 75%;
+    }
+    .reviewHeader{
+        font-family: var(--text-logo);
+        font-size: 2rem;
+        color:var(--font-golden);
+        font-weight: 900;
+        letter-spacing: 2px;
+    }
+    .reviwerStars{
+        &{
+            transform:translateX(-20%) rotateY(180deg);
+
+        }
+        >input{
+            visibility: hidden;
+        }
+        >label{
+            display: block;
+            cursor: pointer;
+            width: 50px;
+            padding: 15px 0;
+
+        }
+        >label:after{
+            content: url('star.svg');
+            position: absolute;
+            display: block;
+            top: 0;
+            opacity: 0.4;
+            font-size: 1.5rem;
+            transition: all 0.5 ease-in-out;
+            text-shadow: 0 2px 5px rgba(0,0,0,0.6);
+            transform: translateY(10px);
+
+        }
+        label:hover::after,
+        label:hover ~ label::after,
+        input:checked ~ label::after{
+            opacity: 1;
+            font-weight: 900;
+        }
+    }
+}
