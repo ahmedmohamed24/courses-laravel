@@ -54,7 +54,7 @@
 }
 
 .addReviewContainer .reviwerStars > label:after {
-  content: url('http://localhost/laravel/courses/public/assets/img/star.svg');
+  content: url('http://localhost/laravel/courses1/public/assets/img/star.svg');
   position: absolute;
   display: block;
   top: 0;

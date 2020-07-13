@@ -25,8 +25,8 @@ Route::group(['prefix' => 'course'], function () {
     Route::get('/all','CourseController@getCourses')->name('courses');
     Route::get('/{id}','CourseController@getCourse')->where(['id'=>'[0-9]+'])->name('course');
     Route::post('/search','CourseController@searchCourse')->name('course.search');
-    Route::post('/review/add','CourseController@addReview')->name('course.addReview')->middleware('studentAuth');
-});
+    Route::post('/review/add','CourseController@addReview')->name('course.addReview');
+});//->middleware('studentAuth')
 
 Route::get('/contact','CourseController@contact')->name('contact');
 Route::get('/cats','CourseController@getCategories')->name('cats');

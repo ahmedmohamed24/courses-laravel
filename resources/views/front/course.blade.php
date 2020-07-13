@@ -45,6 +45,9 @@
                 display: none;
             }
         }
+        .goldenStar{
+            color:goldenrod;
+        }
     </style>
 @endsection
 
@@ -114,6 +117,7 @@
 
         </div>
     </main>
+    {{-- Reviews og the course Section  --}}
     <div class="container  my-5">
         <div class="row reviewsContainer m-auto">
             @if (count($course->review )>0)
@@ -132,7 +136,7 @@
                             <p class="reviewContent my-4">{{ $review->content }}</p>
                             <div class="review-ratting">
                                 @for ($i = 0; $i < $review->rate; $i++)
-                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star goldenStar"></i>
                                 @endfor
                                 @for ($i = $review->rate; $i < 5; $i++)
                                     <i class="far fa-star"></i>
@@ -146,23 +150,31 @@
         <button class="btn btn-outline-primary loadMoreBtn mx-auto d-block" onclick="loadReviews()">Load More</button>
       </div>
     <form id="reviewForm" class="container bg-light  rounded py-4 my-4">
+        @csrf
         <div class="addReviewContainer m-auto text-center">
             <h2 class="text-center mb-2 reviewHeader text-primary">Share Your Review</h2>
             <div class="reviwerStars d-flex mb-4">
-                <input type="radio" name="star" id="star5" value="5"><label for="star5"></label>
+                <input type="radio" name="star" id="star5" value="5" checked><label for="star5"></label>
                 <input type="radio" name="star" id="star4" value="4"><label for="star4"></label>
                 <input type="radio" name="star" id="star3" value="3"><label for="star3"></label>
                 <input type="radio" name="star" id="star2" value="2"><label for="star2"></label>
                 <input type="radio" name="star" id="star1" value="1"><label for="star1"></label>
             </div>
+            <input type="hidden" name="starsRate" value="5">
+            <input type="hidden" name="course" value="{{ $course->id }}">
             <textarea name="reviewDesc"  cols="30" rows="5" class="form-control" placeholder="Write Your review Here ...."></textarea>
-            <button class="btn btn-outline-info mt-3 "  type="submit">Submit</button>
-        </div>@guest disabled @endguest
+            @if (Auth::guard('student')->check())
+                <button class="btn btn-outline-info mt-3 "  type="submit">Submit</button>
+            @else
+                <div class="container text-center my-3 alert alert-warning">Log in To Add your review</div>
+            @endif
+            <div class="alert alert-danger my-3 text-center reviewErrors d-none"></div>
+        </div>
     </form>
 @endsection
 
 @section('script')
-<script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+{{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" ></script> --}}
     <script>
         $('.lectureBtn').click((e)=>{
             var lecture=e.target.attributes['lecture-data'].nodeValue;
@@ -172,6 +184,7 @@
             $(".showLectureImage").removeClass("showLectureImage");
         });
         let index=3;
+        //for loading more reviews
         function loadReviews(){
             for(let i=index+1;i<index+9;i++){
                 //console.log($('.review_col')[4].classList);
@@ -184,11 +197,21 @@
             }
             index+=4;
         }
+        //for adding new review
         $('#reviewForm').submit(function(e){
             e.preventDefault();
+            document.querySelector('.reviewErrors').classList.add("d-none");
+            let stars=document.getElementsByName('star');
+            let starsValue;
+            for(let i=0;i<stars.length;i++){
+                if(stars[i].checked){
+                    starsValue=stars[i].value;
+                }
+            }
+            $('starsRate').value=starsValue;
             let formData= new FormData($('#reviewForm')[0]);
             $.ajax({
-                type: 'post',
+                type: 'POST',
                 //enctype: 'multipart/form-data',
                 url: "{{route('course.addReview')}}",
                 data: formData,
@@ -196,15 +219,19 @@
                 contentType: false,
                 cache: false,
                 success: function (data) {
+                    console.log(data);
                     if (data.status == true) {
                         console.log("sent");
                     }
-                }, error: function (reject) {
-                    var response = $.parseJSON(reject.responseText);
-                    $.each(response.errors, function (key, val) {
-                        console.log(key);
-                        console.log(value);
-                    });
+                },
+                error: function (xhr, status , error) {
+                  $.each(xhr.responseJSON.errors , function(key , item ){
+                      document.querySelector('.reviewErrors').classList.remove("d-none");
+                      let err=document.createElement('DIV');
+                      err.classList.remove("d-none");
+                      err.innerHTML=item;
+                      document.querySelector('.reviewErrors').appendChild(err);
+                  })
                 }
             });
         });

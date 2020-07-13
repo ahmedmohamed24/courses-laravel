@@ -59,7 +59,21 @@ class CourseController extends Controller
     }
     public function addReview( Request $request){
 
-        //$validator=Validator::make([$request->all(),[$request->name=>'required']]);
-        dd($request);
+        $request->validate([
+            'starsRate'=>'required|numeric|min:1|max:5',
+            'reviewDesc'=>'required|string',
+            'course'=>'required|numeric|exists:courses,id'
+        ]);
+        Review::create([
+            'content'=>$request->reviewDesc,
+            'rate'=>$request->starsRate,
+            'course_id'=>$request->course,
+            'student_id'=>Auth('student')->user()->id,
+        ]);
+         return response()->json([
+             'status'=>"200",
+             "message"=>'Successfully Added',
+             "data"=> Null,
+         ]);
     }
 }

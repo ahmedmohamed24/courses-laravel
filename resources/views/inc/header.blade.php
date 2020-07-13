@@ -50,13 +50,13 @@
             <div class="header-bottom header-sticky">
                 <!-- Logo -->
                 <div class="logo d-none d-lg-block">
-                    <a href="{{ route('home') }}"><img src="assets/img/logo/logo.png" alt=""></a>
+                    <a href="{{ route('home') }}"><img src="{{ asset('assets/img/logo/logo.png') }}" alt="Logo Egy courses"></a>
                 </div>
                 <div class="container">
                     <div class="menu-wrapper">
                         <!-- Logo -->
                         <div class="logo logo2 d-block d-lg-none">
-                            <a href="{{ route('home') }}"><img src="{{ asset('assets/img/logo/logo.png') }}" alt=""></a>
+                            <a href="{{ route('home') }}"><img src="{{ asset('assets/img/logo/logo.png') }}" alt="Logo Egy courses"></a>
                         </div>
                         <!-- Main-menu -->
                         <div class="main-menu d-none d-lg-block">
