@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Course;
 use App\Category;
+use App\Review;
 use App\Instructor;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
@@ -70,6 +71,7 @@ class CourseController extends Controller
             'course_id'=>$request->course,
             'student_id'=>Auth('student')->user()->id,
         ]);
+        //return "added";
          return response()->json([
              'status'=>"200",
              "message"=>'Successfully Added',

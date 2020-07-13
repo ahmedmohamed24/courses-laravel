@@ -22,4 +22,11 @@ class Student extends Authenticatable
     public function review(){
         return $this->hasMany('App\Review');
     }
+    public function getNameAttribute($name){
+       return ucfirst($name);
+    }
+    public function setNameAttribute($name){
+        $this->attributes['name']=ucfirst($name);
+    }
+
 }
