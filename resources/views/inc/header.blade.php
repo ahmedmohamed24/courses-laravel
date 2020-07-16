@@ -30,12 +30,13 @@
                             <div class="header-info-right">
                                 @if (Auth('instructor')->check())
                                     <span>{{ Auth('instructor')->user()->name }}</span>
-                                    <a href="{{ route('instructor') }}"></a>
+                                    <a href="{{ route('instructor.logout') }}">Logout</a>
                                 @elseif(Auth('student')->check())
                                     <span>{{ Auth('student')->user()->name }}</span>
                                     <a class="btn btn-dark" href="{{ route('student.logout') }}">Logout</a>
                                 @elseif(Auth('admin')->check())
                                     <span>{{ Auth('admin')->user()->name }}</span>
+                                    <a class="btn btn-dark" href="{{ route('admin.logout') }}">Logout</a>
                                 @else
                                     <ul>
                                         <li><a href="{{ route('student.log') }}"><i class="ti-user"></i>Login</a></li>

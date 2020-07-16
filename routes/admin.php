@@ -26,10 +26,8 @@ Route::group(['prefix' => 'admin','middleware'=>'adminAuth','namespace'=>'admin'
 
 
 
-    //Route::get('/','AdminController@index')->name('admin.index');
-    Route::get('/',function(){
-        return redirect(route('admin.cats'));
-    })->name('admin.index');
+    Route::get('/','AdminController@index')->name('admin.index');
+    
     Route::get('/logout','AdminLogController@logout')->name('admin.logout');
 
     //category

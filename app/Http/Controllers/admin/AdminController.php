@@ -3,19 +3,19 @@
 namespace App\Http\Controllers\admin;
 
 use App\Admin;
-use App\Category;
 use App\Course;
-use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
 use App\Student;
+use App\Category;
+use App\HomePage;
+use Illuminate\Http\Request;
 use Facade\FlareClient\Flare;
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 
 class AdminController extends Controller
 {
     public function index(){
-        $students=Student::findOrFail(18)->course;
-        return view('admin.index',['students'=>$students]);
+       
     }
     public function add(){
         return view('admin.newAdmin');
@@ -52,4 +52,6 @@ class AdminController extends Controller
             return redirect()->back();
         }
     }
+    // \App\HomePage::create(['mainTitle'=>'The New Way To Learn Properly is With Us','secondaryTitle'=>'popular Online Courses','email'=>'ahmed@gmail.com','phoneNumber'=>' 01010 1010 1010','Address'=>'Buttonwood, California.','AboutUs'=>'{"Our Mission":"Consectetur adipiscing elit, sued do eiusmod tempor ididunt udfgt labore et dolore magna aliqua. Quis ipsum suspendisces gravida. Risus commodo viverra sebfd dho eiusmod tempor maecenas accumsan lacus. Risus commodo viverra sebfd dho eiusmod tempor maecenas accumsan lacus.    Risus commodo viverra sebfd dho eiusmod tempor maecenas accumsan lacus. Risus commodo viverra sebfd dho eiusmod tempor maecenas accumsan.",    "Our Vision":"Consectetur adipiscing elit, sued do eiusmod tempor ididunt udfgt labore et dolore magna aliqua. Quis ipsum suspendisces gravida. Risus commodo viverra sebfd dho eiusmod tempor maecenas accumsan lacus. Risus commodo viverra sebfd dho eiusmod tempor maecenas accumsan lacus."}','socialLinks'=>'{    "facebook":"www.facebook.com",    "twitter":"www.twitter.com",    "gmail":"www.gmail.com",    "github":"www.github.com"}','siteName'=>'Online EDU','created_at'=>now(),'updated_at'=>now(),])
+
 }

@@ -65,26 +65,17 @@
                                         <li><a href="{{ route('cat',$category->id) }}">{{ $category->name }}</a></li>
                                     @endforeach
                                 </ul>
-                                {{-- <ul>
-                                    <li><a href="#">Our Plans</a></li>
-                                    <li><a href="#">Free Trial</a></li>
-                                    <li><a href="#">Academic Solutions</a></li>
-                                    <li><a href="#">Business Solutions</a></li>
-                                    <li><a href="#"> Government Solutions</a></li>
-                                </ul> --}}
                             </div>
                         </div>
                     </div>
                     <div class="col-xl-2 col-lg-3 col-md-4 col-sm-6">
                         <div class="single-footer-caption mb-50">
                             <div class="footer-tittle">
-                                <h4>Study</h4>
+                                <h4>Courses</h4>
                                 <ul>
-                                    <li><a href="#">Admissions Policy</a></li>
-                                    <li><a href="#">Getting Started</a></li>
-                                    <li><a href="#">Online Application</a></li>
-                                    <li><a href="#">Visa Information</a></li>
-                                    <li><a href="#">Tuition Calculator</a></li>
+                                    @foreach ($footerCourses as $course)
+                                        <li><a href="{{ route('course',$course->id) }}">{{ $course->title }}</a></li>
+                                    @endforeach
                                 </ul>
                             </div>
                         </div>

@@ -25,7 +25,7 @@ Route::group(['prefix' => 'instructor','namespace'=>'instructors','middleware'=>
 });
 //
 
-Route::group(['prefix' => 'instructor','namespace'=>'instructors','middleware'=>['instructorAuth','VerifyEmailMiddleware']], function () {
+Route::group(['prefix' => 'instructor','namespace'=>'instructors','middleware'=>['instructorAuth']], function () {
     Route::get('/dashboard','InstructorController@index')->name('instructor.dashboard');
     Route::get('/logout','InstructorAuthController@logout')->name('instructor.logout');
     Route::get('/add/course','InstructorController@add')->name('instructor.add');
