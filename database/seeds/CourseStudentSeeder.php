@@ -14,8 +14,8 @@ class CourseStudentSeeder extends Seeder
     {
        for($i=1;$i<30;$i++){
         DB::table('course_student')->insert([
-            'course_id'=>  rand(1,60),
-            'student_id'=> rand(1,30),
+            'course_id'=>  rand(1,80),
+            'student_id'=> rand(1,20),
             'created_at'=> now(),
             'updated_at'=>now()
         ]);

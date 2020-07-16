@@ -11,7 +11,7 @@ $factory->define(Lecture::class, function (Faker $faker) {
         'desc'=>$faker->sentence(40,true),
         'img'=>$faker->regexify('/^(cat)[1-6]{1}\.(svg)$/'),
         'duration'=>$faker->time($format = 'H:i:s', $max = 'now'),
-        'course_id'=>$faker->numberBetween(1,60),
+        'course_id'=>$faker->numberBetween(1,80),
         'created_at'=>now(),
         'updated_at'=>now(),
     ];

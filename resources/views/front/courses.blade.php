@@ -3,7 +3,7 @@
 
 
 @section('title')
-    Contact Us
+    Courses | all
 @endsection
 @section('content')
     <main>

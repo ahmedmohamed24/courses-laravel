@@ -3,10 +3,9 @@
 namespace App\Providers;
 
 use App\Category;
-use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
 
-class ViewServiceProvider extends ServiceProvider
+class CategoriesProvider extends ServiceProvider
 {
     /**
      * Register services.
@@ -15,10 +14,11 @@ class ViewServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        view()->composer('inc/footer',function($view){
-            $cats=Category::get();
+        view()->composer('/inc/footer',function($view){
+            $cats=Category::take(6)->get();
             $view->with('cats',$cats);
         });
+       
     }
 
     /**
@@ -28,6 +28,6 @@ class ViewServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+       
     }
 }

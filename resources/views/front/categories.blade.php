@@ -7,7 +7,7 @@
 @endsection
 @section('content')
 
-<div class="categories-area my-4">
+<div class="categories-area mt-4">
     <div class="container">
         <div class="row">
 

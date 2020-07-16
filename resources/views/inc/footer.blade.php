@@ -60,18 +60,18 @@
                         <div class="single-footer-caption mb-50">
                             <div class="footer-tittle">
                                 <h4>Categories</h4>
-                                {{-- <ul>
+                                <ul>
                                     @foreach ($cats as $category)
                                         <li><a href="{{ route('cat',$category->id) }}">{{ $category->name }}</a></li>
                                     @endforeach
-                                </ul> --}}
-                                <ul>
+                                </ul>
+                                {{-- <ul>
                                     <li><a href="#">Our Plans</a></li>
                                     <li><a href="#">Free Trial</a></li>
                                     <li><a href="#">Academic Solutions</a></li>
                                     <li><a href="#">Business Solutions</a></li>
                                     <li><a href="#"> Government Solutions</a></li>
-                                </ul>
+                                </ul> --}}
                             </div>
                         </div>
                     </div>

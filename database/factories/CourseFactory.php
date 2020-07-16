@@ -13,7 +13,7 @@ $factory->define(Course::class, function (Faker $faker) {
         'price'=>$faker->numberBetween(0.99,9999.99),
         'img'=>$faker->regexify('/^[1-3]{1}\.(png)$/'),
         'cat_id'=>$faker->numberBetween(1,12),
-        'instructor_id'=>$faker->numberBetween(1,20),
+        'instructor_id'=>$faker->numberBetween(1,30),
         'created_at'=>now(),
         'updated_at'=>now()
     ];
