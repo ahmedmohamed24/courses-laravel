@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers\admin;
 
+use App\Home;
+use App\About;
 use App\Admin;
 use App\Course;
+use App\Contact;
 use App\Student;
 use App\Category;
 use App\HomePage;
@@ -11,11 +14,56 @@ use Illuminate\Http\Request;
 use Facade\FlareClient\Flare;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Validator;
+use \App\traits\ImageUploader;
 
 class AdminController extends Controller
 {
+    use ImageUploader;
     public function index(){
-       
+      
+      $data= Home::first();
+      return view('admin.index',['data'=>$data]);
+      
+    }
+    public function updateHome(Request $request){
+        $validators=Validator::make(
+            $request->all(),
+            [
+                'siteName'=>'required|string|max:50|min:3',
+                'mainTitle'=>'required|string|max:150|min:5',
+                'secondaryTitle'=>'required|string|max:150|min:5',
+                'logo'=>'nullable|image|mimes:png,jpg,jpeg',
+            ]
+        );
+        if($validators->fails())
+            return response()->json(['failed'=>$validators,401]);
+
+        if($request->file('logo') !== null){
+                //Remove old image and add new Image Path
+            $newName=$this->upload($request->file('logo'),'assets/img/logo');
+            Home::update([
+                'mainTitle'=>$request->mainTitle,
+                'secondaryTitle'=>$request->secondaryTitle,
+                'siteName'=>$request->siteName,
+                'logo'=>$newName,
+            ]);
+        }else{
+            Home::update([
+                'mainTitle'=>$request->mainTitle,
+                'secondaryTitle'=>$request->secondaryTitle,
+                'siteName'=>$request->siteName,
+            ]);
+        }
+        return response()->json(['success',200]);
+    }
+    public function about(){
+        $data= About::get();
+        
+    }
+    public function contacts(){
+        $data= Contact::get();
+        
     }
     public function add(){
         return view('admin.newAdmin');

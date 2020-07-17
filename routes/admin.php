@@ -27,6 +27,9 @@ Route::group(['prefix' => 'admin','middleware'=>'adminAuth','namespace'=>'admin'
 
 
     Route::get('/','AdminController@index')->name('admin.index');
+    Route::post('/updateHome','AdminController@updateHome')->name('admin.updateHome');
+    Route::get('/about','AdminController@about')->name('admin.about');
+    Route::get('/contacts','AdminController@contacts')->name('admin.contacts');
     
     Route::get('/logout','AdminLogController@logout')->name('admin.logout');
 
@@ -42,7 +45,7 @@ Route::group(['prefix' => 'admin','middleware'=>'adminAuth','namespace'=>'admin'
 
     //admin settings
     Route::get('/settings','AdminController@settings')->name('admin.settings');
-    Route::get('/add','AdminController@add')->name('admin.add');
+    Route::get('/add','AdminController@add')->name('admin.add'); //adding new admin
     Route::post('/add','AdminController@save')->name('admin.save');
     Route::post('/change','AdminController@change')->name('admin.change');//change password
 });

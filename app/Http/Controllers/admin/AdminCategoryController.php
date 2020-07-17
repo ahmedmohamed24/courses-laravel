@@ -2,14 +2,16 @@
 
 namespace App\Http\Controllers\admin;
 
-use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
-use App\Category;
 use App\Course;
+use App\Category;
+use Illuminate\Http\Request;
+use App\traits\ImageUploader;
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Storage;
 
 class AdminCategoryController extends Controller
 {
+    use ImageUploader;
     public function getCats(){
         $cats=Category::paginate(9);
         return view('admin.cats',["cats"=>$cats]);
@@ -22,11 +24,7 @@ class AdminCategoryController extends Controller
             'name'=>'string|max:100|required|unique:categories,name',
             'img'=>'required|image|mimes:png,jpg,jpeg'
         ]);
-        $img=$request->file('img');
-        $ext=$img->getClientOriginalExtension();
-        $newName="cat-".uniqid().".$ext";
-        $img->move(public_path('uploads/categories'),$newName);
-
+        $newName=$this->upload($request->file('img'),'uploads/categories');
         Category::create(['name'=>$request->name, 'img'=>$newName]);
         $request->session()->flash('isUploaded', true);
         return redirect(route('admin.createCategory'));
@@ -47,10 +45,7 @@ class AdminCategoryController extends Controller
             $oldName=Category::findOrFail($request->id)->img;
             unlink(public_path('uploads/categories/').$oldName);
             //upload new image
-            $img=$request->file('img');
-            $ext=$img->getClientOriginalExtension();
-            $newName=$img->hashName();
-            $img->move(public_path('uploads/categories'),$newName);
+            $newName=$this->upload($request->file('img'),'uploads/categories');
             Category::findOrFail($request->id)->update(['name'=>$request->name, 'img'=> $newName]);
         }
         else

@@ -8,6 +8,12 @@
                 <a class="nav-link" href="{{ route('admin.index') }}">Home</a>
             </li>
             <li class="nav-item active">
+                <a class="nav-link" href="{{ route('admin.about') }}">About Us</a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link" href="{{ route('admin.contacts') }}">Contacts</a>
+            </li>
+            <li class="nav-item active">
                 <a class="nav-link" href="{{ route('admin.cats') }}">Categories</a>
             </li>
             <li class="nav-item dropdown">
