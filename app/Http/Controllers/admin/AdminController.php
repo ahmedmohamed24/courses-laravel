@@ -10,16 +10,17 @@ use App\Contact;
 use App\Student;
 use App\Category;
 use App\HomePage;
+use App\traits\AjaxResponse;
 use Illuminate\Http\Request;
 use Facade\FlareClient\Flare;
+use \App\traits\ImageUploader;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
-use \App\traits\ImageUploader;
 
 class AdminController extends Controller
 {
-    use ImageUploader;
+    use ImageUploader,AjaxResponse;
     public function index(){
       
       $data= Home::first();
@@ -37,25 +38,25 @@ class AdminController extends Controller
             ]
         );
         if($validators->fails())
-            return response()->json(['failed'=>$validators,401]);
-
+            return $this->response(false,$validators->messages(),null);
+        $id=Home::select('id')->get()->first();
         if($request->file('logo') !== null){
                 //Remove old image and add new Image Path
             $newName=$this->upload($request->file('logo'),'assets/img/logo');
-            Home::update([
+            Home::findOrFail($id['id'])->update([
                 'mainTitle'=>$request->mainTitle,
                 'secondaryTitle'=>$request->secondaryTitle,
                 'siteName'=>$request->siteName,
                 'logo'=>$newName,
             ]);
         }else{
-            Home::update([
+            Home::findOrFail($id['id'])->update([
                 'mainTitle'=>$request->mainTitle,
                 'secondaryTitle'=>$request->secondaryTitle,
                 'siteName'=>$request->siteName,
             ]);
         }
-        return response()->json(['success',200]);
+        return $this->response(true,'Success');
     }
     public function about(){
         $data= About::get();
