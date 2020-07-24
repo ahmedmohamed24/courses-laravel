@@ -27,6 +27,7 @@ Route::group(['namespace'=>'students','prefix'=>'student','middleware'=>['studen
 });
 Route::group(['namespace'=>'students','prefix'=>'student','middleware'=>'studentAuth'], function () {
     //student
+  Route::get('/dashboard','StudentController@dashboard')->name('student.dashboard');  
   Route::get('/logout','StudentController@logout')->name('student.logout');
 
 });

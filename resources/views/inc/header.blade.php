@@ -29,14 +29,28 @@
                             </div>
                             <div class="header-info-right">
                                 @if (Auth('instructor')->check())
-                                    <span>{{ Auth('instructor')->user()->name }}</span>
-                                    <a href="{{ route('instructor.logout') }}">Logout</a>
+                                    <div class="nav-item dropdown">
+                                        <a class="nav-link dropdown-toggle text-primary" href="#" id="dropdownId" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{Str::limit( Auth('instructor')->user()->name, 15, '...') }} <img src="{{ asset('assets/img/user.svg') }}" alt="user Icon"></a>
+                                        <div class="dropdown-menu" aria-labelledby="dropdownId">
+                                            <a class="dropdown-item" href="{{ route('instructor.dashboard') }}">Dashboard</a>
+                                            <a class="dropdown-item" href="{{ route('instructor.logout') }}">Logout</a>
+                                        </div>
+                                    </div>
                                 @elseif(Auth('student')->check())
-                                    <span>{{ Auth('student')->user()->name }}</span>
-                                    <a class="btn btn-dark" href="{{ route('student.logout') }}">Logout</a>
+                                    <div class="nav-item dropdown">
+                                        <a class="nav-link dropdown-toggle text-primary" href="#" id="dropdownId" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{Str::limit( Auth('student')->user()->name , 15, '...') }} <img src="{{ asset('assets/img/user.svg') }}" alt="user Icon"></a>
+                                        <div class="dropdown-menu" aria-labelledby="dropdownId">
+                                            <a class="dropdown-item" href="{{ route('student.dashboard') }}">Dashboard</a>
+                                            <a class="dropdown-item" href="{{ route('student.logout') }}">Logout</a>
+                                        </div>
+                                    </div>
                                 @elseif(Auth('admin')->check())
-                                    <span>{{ Auth('admin')->user()->name }}</span>
-                                    <a class="btn btn-dark" href="{{ route('admin.logout') }}">Logout</a>
+                                    <div class="nav-item dropdown">
+                                        <a class="nav-link dropdown-toggle text-primary" href="#" id="dropdownId" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{Str::limit( Auth('admin')->user()->name , 15, '...') }} <img src="{{ asset('assets/img/user.svg') }}" alt="user Icon"></a>
+                                        <div class="dropdown-menu" aria-labelledby="dropdownId">
+                                            <a class="dropdown-item" href="{{ route('admin.logout') }}">Logout</a>
+                                        </div>
+                                    </div>
                                 @else
                                     <ul>
                                         <li><a href="{{ route('student.log') }}"><i class="ti-user"></i>Login</a></li>

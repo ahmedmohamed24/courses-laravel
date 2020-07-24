@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\students;
 
+use App\Course;
 use App\Student;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -65,7 +66,11 @@ class StudentController extends Controller
         return redirect(route('home'));
 
     }
-
+    public function dashboard(){
+        $id=Auth('student')->user()->id;
+        $student=Student::with('course')->where('id',$id)->get()->first();
+        return view('student.dashboard',['courses'=>$student->course]);
+    }
     public function logout(){
         Auth('student')->logout();
         return redirect(route('home'));

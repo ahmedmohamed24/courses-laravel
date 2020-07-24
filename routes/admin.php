@@ -36,7 +36,7 @@ Route::group(['prefix' => 'admin','middleware'=>'adminAuth','namespace'=>'admin'
     Route::get('/logout','AdminLogController@logout')->name('admin.logout');
 
     //category
-    Route::group(['prefix' => 'category'], function () {
+    Route::group(['prefix' => '/category'], function () {
         Route::get('/','AdminCategoryController@getCats')->name('admin.cats');
         Route::get('/create','AdminCategoryController@createCat')->name('admin.createCategory');
         Route::post('/create','AdminCategoryController@saveCat') ->name('admin.saveCategory');
