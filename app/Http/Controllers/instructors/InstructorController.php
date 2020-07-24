@@ -12,6 +12,10 @@ use App\Http\Controllers\Controller;
 class InstructorController extends Controller
 {
     use ImageUploader;
+    public function __construct()
+    {
+        $this->middleware('instructorAuth');
+    }
     public function index()
     {
         $courses = Course::where('instructor_id', '=', Auth('instructor')->user()->id)->paginate(9);

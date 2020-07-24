@@ -4,17 +4,17 @@
 @endsection
 @section('content')
 
-@if (session()->has('isNotAdmin'))
-    <div class="alert alert-danger">You are Not an admin</div>
-    <?php session()->forget('isNotAdmin')  ?>
-@endif
-
-
-@if (session()->has('MustVerifyEmail'))
-    <div class="alert alert-danger">Please, visit your email to verify your account</div>
-    <?php session()->forget('MustVerifyEmail')  ?>
-@endif
-    <main>
+<main>
+        {{-- for admin redirect after entering wrong data --}}
+        @if (session()->has('isNotAdmin'))
+            <div class="alert alert-danger">You are Not an admin</div>
+            <?php session()->forget('isNotAdmin')  ?>
+        @endif
+        {{-- for instructor trying to get to dashboard before activating the email --}}
+        @if (session()->has('MustVerifyEmail'))
+            <div class="alert alert-danger text-center">Please, visit your email to verify your account</div>
+            <?php session()->forget('MustVerifyEmail')  ?>
+        @endif
         <!--? slider Area Start-->
         <div class="slider-area ">
             <div class="slider-active">

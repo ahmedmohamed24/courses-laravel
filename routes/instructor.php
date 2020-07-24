@@ -26,11 +26,16 @@ Route::group(['prefix' => 'instructor','namespace'=>'instructors','middleware'=>
 //
 
 Route::group(['prefix' => 'instructor','namespace'=>'instructors','middleware'=>['instructorAuth']], function () {
-    Route::get('/dashboard','InstructorController@index')->name('instructor.dashboard');
+    Route::group(['middleware'=>'InstructorEmailVerifyMiddleware'],function(){
+        Route::get('/dashboard','InstructorController@index')->name('instructor.dashboard');
+        Route::get('/add/course','InstructorController@add')->name('instructor.add');
+        Route::post('/add/course','InstructorController@save')->name('instructor.save');
+        Route::get('/add/lecture/{courseId}','InstructorController@lectureAdd')->where(['courseId'=>'[0-9]+'])->name('instructor.lecture.add');
+        Route::post('/add/lecture','InstructorController@lectureSave')->name('instructor.lecture.save');
+    });
     Route::get('/logout','InstructorAuthController@logout')->name('instructor.logout');
-    Route::get('/add/course','InstructorController@add')->name('instructor.add');
-    Route::post('/add/course','InstructorController@save')->name('instructor.save');
-    Route::get('/add/lecture/{courseId}','InstructorController@lectureAdd')->where(['courseId'=>'[0-9]+'])->name('instructor.lecture.add');
-    Route::post('/add/lecture','InstructorController@lectureSave')->name('instructor.lecture.save');
 
+});
+Route::get('authMail',function(){
+    \Mail::to('anaelmoaks@gmail.com')->send(new App\Mail\TestMail(null));
 });

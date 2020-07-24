@@ -4,7 +4,7 @@ namespace App\Http\Middleware;
 
 use Closure;
 
-class VerifyEmailMiddleware
+class InstructorEmailVerifyMiddleware
 {
     /**
      * Handle an incoming request.
@@ -16,7 +16,7 @@ class VerifyEmailMiddleware
     public function handle($request, Closure $next)
     {
         if(Auth('instructor')->user()->email_verified_at === null){
-            session()->flash('MustVerifyEmail',true);
+            session()->put('MustVerifyEmail','hello');
             return redirect(route('home'));
         }
         return $next($request);

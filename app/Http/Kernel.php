@@ -63,8 +63,7 @@ class Kernel extends HttpKernel
         //instructor
         'instructorAuth' => \App\Http\Middleware\InstructorAuth::class,
         'instructorRedirect' => \App\Http\Middleware\InstructorRedirectAuth::class,
-        'VerifyEmailMiddleware' => \App\Http\Middleware\InstructorRedirectAuth::class,
-
+        'InstructorEmailVerifyMiddleware'=> \App\Http\Middleware\InstructorEmailVerifyMiddleware::class,
         'auth.basic' => \Illuminate\Auth\Middleware\AuthenticateWithBasicAuth::class,
         'bindings' => \Illuminate\Routing\Middleware\SubstituteBindings::class,
         'cache.headers' => \Illuminate\Http\Middleware\SetCacheHeaders::class,
