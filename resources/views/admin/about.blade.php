@@ -8,48 +8,39 @@
     <style>
         .logoImg{
             width:200px;
-            height:200px;
+            height:200px; 
         }    
     </style>
 @endsection
 @section('content')
-    <form id="homeForm" class="container my-5">
-        @csrf
-        <div class="form-group">
-            <label for="siteName" class="text-primary">Site Name</label>
-            <input type="text" class="form-control" name="siteName" id="siteName" value="{{ $data->siteName }}">
+        <div class="container my-5">
+            <div class="reviewErrors alert alert-danger d-none"></div>
+            <div class="reviewSuccess alert alert-success d-none"></div>
         </div>
-        <div class="form-group">
-            <label for="mainTitle" class="text-primary">Main Title Section</label>
-            
-            <input type="text" class="form-control" name="mainTitle" id="mainTitle" value="{{ $data->mainTitle }}">
-        </div>
-        <div class="form-group">
-            <label for="secondaryTitle" class="text-primary">Secondary Title Section</label>
-            <input type="text" class="form-control" name="secondaryTitle" id="secondaryTitle" value="{{ $data->secondaryTitle }}">
-        </div>
-        <img src="{{ public_path("assets/img/logo/$data->logo") }}" class="logoImg" alt="{{ $data->siteName }}">
-        <div class="input-group mb-3">
-            <div class="input-group-prepend">
-            <span class="input-group-text" id="uploadInput">Upload</span>
-            </div>
-            <div class="custom-file">
-            <input type="file" class="custom-file-input" id="in-1" name="logo" aria-describedby="uploadInput">
-            <label class="custom-file-label" for="in-1">Site LOGO</label>
-            </div>
-        </div>
-        <div class="reviewErrors alert alert-danger d-none"></div>
-        <div class="reviewSuccess alert alert-success d-none"></div>
-        <button class="btn btn-warning" type="submit">Update</button>
-    </form>
-
+        @foreach ($data as $section)
+            <form id="id-{{$loop->index}}" class="my-5 formData container" >
+                @csrf
+                <div class="form-group">
+                    <label for="sectionHeader{{$loop->index}}" class="text-primary">Section Header {{ $loop->index }}</label>
+                    <input type="text" class="form-control" name="sectionHeader" id="sectionHeader{{$loop->index}}" value="{{ $section->sectionHeader }}">
+                    <input type="text" class="form-control" name="sectionContent"  value="{{ $section->sectionContent }}">
+                    <input type="hidden" name="id"  value="{{ $section->id }}">
+                    <button class="btn btn-warning" type="submit">Update</button>
+                </div>
+            </form>
+        @endforeach
 @endsection
 
 @section('script')
     <script>
-        $('#homeForm').submit((e)=>{
+        for(let i=0;i<2;i++){
+            $(`#id-${i}`).submit((e)=>{
+                ajaxSend(e,i);
+            })
+        }
+        function ajaxSend(e,i){
             e.preventDefault();
-            let formData= new FormData($('#homeForm')[0]);
+            let formData= new FormData($(`#id-${i}`)[0]);
             //make the both containers for success message and error messages empty and hidden again
             const successContainer=document.querySelector('.reviewSuccess');
             const errorContainer=document.querySelector('.reviewErrors');
@@ -65,7 +56,7 @@
             $.ajax({
                 type: 'POST',
                 enctype: 'multipart/form-data',
-                url: "{{route('admin.updateHome')}}",
+                url: "{{route('admin.updateAbout')}}",
                 data: formData,
                 processData: false,
                 contentType: false,
@@ -87,6 +78,6 @@
                 },
                 
             });
-        })
+        }
     </script>
 @endsection

@@ -21,13 +21,14 @@ use Illuminate\Support\Facades\Validator;
 class AdminController extends Controller
 {
     use ImageUploader,AjaxResponse;
+    //admin home page
     public function index(){
       
       $data= Home::first();
       return view('admin.index',['data'=>$data]);
       
     }
-    public function updateHome(Request $request){
+    public function updateIndex(Request $request){
         $validators=Validator::make(
             $request->all(),
             [
@@ -58,14 +59,59 @@ class AdminController extends Controller
         }
         return $this->response(true,'Success');
     }
+    //admin for updating about us page
     public function about(){
         $data= About::get();
+        return view('admin.about',['data'=>$data]);
         
     }
+    public function updateAbout(Request $request){
+        $validators=Validator::make($request->all(),
+        [
+            'sectionHeader'=>'required|string|max:100',
+            'sectionContent'=>'required|string',
+            'id'=>'numeric|required|exists:abouts,id'
+        ]);
+        if($validators->fails())
+            return $this->response(false,$validators->messages());
+        About::findOrFail($request->id)->update([
+            'sectionHeader'=>$request->sectionHeader,
+            'sectionContent'=>$request->sectionContent,
+        ]);
+        return $this->response(true,'Success');
+    }
+
+    //admin for updating contacts pade
     public function contacts(){
-        $data= Contact::get();
-        
+        $data= Contact::get()->first();
+        return view('admin.contacts',['data'=>$data]);
     }
+    public function updaeContacts(Request $request){
+        $validators=Validator::make($request->all(),[
+            'phone'=>'required|string|numeric',
+            'email'=>'required|email|max:50',
+            'address'=>'required|string',
+            'facebook'=>'required|url',
+            'twitter'=>'required|url',
+            'github'=>'required|url',
+            'gmail'=>'required|url'
+        ]);
+        if($validators->fails())
+            return $this->response(false,$validators->messages());
+        $id=Contact::select('id')->get()->first();
+        $id=$id['id'];
+        Contact::findOrFail($id)->update([
+            'phone'=>$request->phone,
+            'email'=>$request->email,
+            'address'=>$request->address,
+            'facebook'=>$request->facebook,
+            'twitter'=>$request->twitter,
+            'github'=>$request->github,
+            'gmail'=>$request->gmail
+        ]);
+        return $this->response(true,'success');
+    }
+    //for adding new  admin
     public function add(){
         return view('admin.newAdmin');
     }
@@ -83,6 +129,9 @@ class AdminController extends Controller
         $request->session()->flash('isAdminAdded',true);
         return redirect()->back();
     }
+
+
+    //change admin settings and reset password 
     public function settings(){
         return view('admin/settings');
     }
@@ -101,6 +150,4 @@ class AdminController extends Controller
             return redirect()->back();
         }
     }
-    // \App\HomePage::create(['mainTitle'=>'The New Way To Learn Properly is With Us','secondaryTitle'=>'popular Online Courses','email'=>'ahmed@gmail.com','phoneNumber'=>' 01010 1010 1010','Address'=>'Buttonwood, California.','AboutUs'=>'{"Our Mission":"Consectetur adipiscing elit, sued do eiusmod tempor ididunt udfgt labore et dolore magna aliqua. Quis ipsum suspendisces gravida. Risus commodo viverra sebfd dho eiusmod tempor maecenas accumsan lacus. Risus commodo viverra sebfd dho eiusmod tempor maecenas accumsan lacus.    Risus commodo viverra sebfd dho eiusmod tempor maecenas accumsan lacus. Risus commodo viverra sebfd dho eiusmod tempor maecenas accumsan.",    "Our Vision":"Consectetur adipiscing elit, sued do eiusmod tempor ididunt udfgt labore et dolore magna aliqua. Quis ipsum suspendisces gravida. Risus commodo viverra sebfd dho eiusmod tempor maecenas accumsan lacus. Risus commodo viverra sebfd dho eiusmod tempor maecenas accumsan lacus."}','socialLinks'=>'{    "facebook":"www.facebook.com",    "twitter":"www.twitter.com",    "gmail":"www.gmail.com",    "github":"www.github.com"}','siteName'=>'Online EDU','created_at'=>now(),'updated_at'=>now(),])
-
 }

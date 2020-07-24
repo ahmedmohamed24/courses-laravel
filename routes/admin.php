@@ -20,17 +20,19 @@ Route::group(['prefix' => 'admin','middleware'=>'adminRedirect','namespace'=>'ad
 });
 
 
-
-
 Route::group(['prefix' => 'admin','middleware'=>'adminAuth','namespace'=>'admin'], function () {
 
 
 
     Route::get('/','AdminController@index')->name('admin.index');
-    Route::post('/updateHome','AdminController@updateHome')->name('admin.updateHome');
+    Route::post('/updateHome','AdminController@updateIndex')->name('admin.updateHome');
+    //about
     Route::get('/about','AdminController@about')->name('admin.about');
+    Route::post('/about/update','AdminController@updateAbout')->name('admin.updateAbout');
+    //contacts
     Route::get('/contacts','AdminController@contacts')->name('admin.contacts');
-    
+    Route::post('/contacts/update','AdminController@updaeContacts')->name('admin.updateContacts');
+
     Route::get('/logout','AdminLogController@logout')->name('admin.logout');
 
     //category

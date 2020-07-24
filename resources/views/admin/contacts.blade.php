@@ -13,44 +13,49 @@
     </style>
 @endsection
 @section('content')
-    <form id="homeForm" class="container my-5">
+    <form id="homeForm" class="container my-5"> 
         @csrf
         <div class="form-group">
-            <label for="siteName" class="text-primary">Site Name</label>
-            <input type="text" class="form-control" name="siteName" id="siteName" value="{{ $data->siteName }}">
+            <label for="phone" class="text-primary">Phone</label>
+            <input type="text" class="form-control" name="phone" id="phone" value="{{ $data->phone }}">
         </div>
         <div class="form-group">
-            <label for="mainTitle" class="text-primary">Main Title Section</label>
-            
-            <input type="text" class="form-control" name="mainTitle" id="mainTitle" value="{{ $data->mainTitle }}">
+            <label for="email" class="text-primary">Email</label>
+            <input type="email" class="form-control" name="email" id="email" value="{{ $data->email }}">
         </div>
         <div class="form-group">
-            <label for="secondaryTitle" class="text-primary">Secondary Title Section</label>
-            <input type="text" class="form-control" name="secondaryTitle" id="secondaryTitle" value="{{ $data->secondaryTitle }}">
+            <label for="address" class="text-primary">Address</label>
+            <textarea name="address" id="address" class="form-control">{{ $data->address }}</textarea>
         </div>
-        <img src="{{ public_path("assets/img/logo/$data->logo") }}" class="logoImg" alt="{{ $data->siteName }}">
-        <div class="input-group mb-3">
-            <div class="input-group-prepend">
-            <span class="input-group-text" id="uploadInput">Upload</span>
-            </div>
-            <div class="custom-file">
-            <input type="file" class="custom-file-input" id="in-1" name="logo" aria-describedby="uploadInput">
-            <label class="custom-file-label" for="in-1">Site LOGO</label>
-            </div>
+        <div class="form-group">
+            <label for="facebook" class="text-primary">facebook</label>
+            <input type="text" class="form-control" name="facebook" id="facebook" value="{{ $data->facebook }}">
         </div>
+        <div class="form-group">
+            <label for="twitter" class="text-primary">twitter</label>
+            <input type="text" class="form-control" name="twitter" id="twitter" value="{{ $data->twitter }}">
+        </div>
+        <div class="form-group">
+            <label for="github" class="text-primary">github</label>
+            <input type="text" class="form-control" name="github" id="github" value="{{ $data->github }}">
+        </div>
+        <div class="form-group">
+            <label for="gmail" class="text-primary">gmail</label>
+            <input type="text" class="form-control" name="gmail" id="gmail" value="{{ $data->gmail }}">
+        </div>
+        
         <div class="reviewErrors alert alert-danger d-none"></div>
         <div class="reviewSuccess alert alert-success d-none"></div>
         <button class="btn btn-warning" type="submit">Update</button>
     </form>
 
 @endsection
-
 @section('script')
     <script>
         $('#homeForm').submit((e)=>{
             e.preventDefault();
             let formData= new FormData($('#homeForm')[0]);
-            //make the both containers for success message and error messages empty and hidden again
+            //make the both containers for success messages and error messages empty and hidden again
             const successContainer=document.querySelector('.reviewSuccess');
             const errorContainer=document.querySelector('.reviewErrors');
             successContainer.innerHTML="";
@@ -65,7 +70,7 @@
             $.ajax({
                 type: 'POST',
                 enctype: 'multipart/form-data',
-                url: "{{route('admin.updateHome')}}",
+                url: "{{route('admin.updateContacts')}}",
                 data: formData,
                 processData: false,
                 contentType: false,
