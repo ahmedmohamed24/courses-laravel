@@ -6,6 +6,12 @@
 @section('content')
 
     <h1 class="text-info text-center">Instructor Login</h1>
+
+    @if (session()->has('isNotWaited'))
+        {{ session()->forget('isNotWaited') }}
+        <div class="alert alert-danger text-center container">Please visite your email or wait 10 minutes to resend</div>
+    @endif
+
     <p class=" container">Log in as, <a class="text-primary" href="{{ route('student.log') }}">Student ?</a></p>
     <form action="{{ route('instructor.doLog') }}" class="container my-5" method="post">
         @csrf
@@ -29,6 +35,7 @@
         </div>
         <p class=" container">Not User, <a class="text-primary" href="{{ route('instructor.register') }}">Register ?</a></p>
         <button class="btn btn-primary" type="submit">Log In</button>
+        <p class="my-4">Forget password? <a class="text-primary" href="{{ route('instructor.resetPass') }}">CLick here</a></p>
     </form>
 @endsection
 

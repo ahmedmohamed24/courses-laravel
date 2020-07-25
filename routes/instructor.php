@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\instructors\ResetPassword;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,6 +23,13 @@ Route::group(['prefix' => 'instructor','namespace'=>'instructors','middleware'=>
     Route::post('/login','InstructorAuthController@doLog')->name('instructor.doLog');
     Route::get('/register','InstructorAuthController@register')->name('instructor.register');
     Route::post('/register','InstructorAuthController@doRegister')->name('instructor.doRegister');
+    //resetting password
+    Route::get('/password/email','ResetPassword@index')->name('instructor.resetPass');
+    Route::post('/password/send/mail','ResetPassword@sendResetMail')->name('instructor.sendResetMail');
+    Route::get('/password/reset/{$token}','ResetPassword@reset')->name('instructor.reset');
+    Route::get('/password/new','ResetPassword@createNewPassword')->name('instructor.newpassword');
+    Route::post('/password/save','ResetPassword@savePassword')->name('instructor.savePassword');
+
 });
 //
 

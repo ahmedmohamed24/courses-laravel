@@ -16,10 +16,10 @@ class TestMail extends Mailable
      *
      * @return void
      */
-    public $data;
-    public function __construct($data)
-    {   
-        $this->data=$data;
+    public $token;
+    public function __construct($token)
+    {
+        $this->token=$token;
     }
 
     /**
@@ -29,6 +29,6 @@ class TestMail extends Mailable
      */
     public function build()
     {
-        return $this->subject('Test Mail')->view('mails.test');
+        return $this->subject('Test Mail')->view('mails.test',['token'=>$this->token]);
     }
 }
