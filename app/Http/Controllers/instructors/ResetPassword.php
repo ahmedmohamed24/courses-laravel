@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
 use App\Http\Controllers\Controller;
 use App\ResetPassword as ResetModel;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Validator;
 
@@ -50,19 +51,17 @@ class ResetPassword extends Controller
     }
     public function reset($token)
     {
-        return $token;
         $result=ResetModel::where('token',$token)->get()->last();
-        dd($result);
         if($result=== null){
             //Token is not right
             return abort(404,"This link is no more available ");
         }
-        if($result->updated_at === null ){
+        else if($result->updated_at === null ){
             //this link used before
             return abort(404,"This link is no more available ");
         }
         $delay=(strtotime(date("Y-m-d H:i:s"))-strtotime($result->created_at))/60;
-        if($delay < 10){
+        if($delay > 10){
             //this link sent before 10 minutes
             return abort(404,"This link is no more available ");
         }
@@ -84,11 +83,11 @@ class ResetPassword extends Controller
             'password'=>'required|string',
             'password-c'=>'required|string|same:password'
         ]);
-        $instructor=Instructor::where('email',session()->get('emailToBeReset'))->get();
+        $instructor=Instructor::where('email',session()->get('emailToBeReset'))->get()->first();
         if($instructor===null)
             return abort(500,"Serve Error");
-        Instructor::findOrFail($instructor->id)->update(['password'=>$request->password]);
-        Auth('instructor')->attempt(['email'=>$instructor->email,'password'=>$instructor->password]);
+        Instructor::findOrFail($instructor->id)->update(['password'=>Hash::make($request->password)]);
+        Auth('instructor')->attempt(['email'=>$instructor->email,'password'=>$request->password]);
         return redirect(route('instructor.dashboard'));
 
     }

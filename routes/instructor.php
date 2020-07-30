@@ -26,7 +26,7 @@ Route::group(['prefix' => 'instructor','namespace'=>'instructors','middleware'=>
     //resetting password
     Route::get('/password/email','ResetPassword@index')->name('instructor.resetPass');
     Route::post('/password/send/mail','ResetPassword@sendResetMail')->name('instructor.sendResetMail');
-    Route::get('/password/reset/{$token}','ResetPassword@reset')->name('instructor.reset');
+    Route::get('/reset/password/{token}','ResetPassword@reset')->name('instructor.reset');
     Route::get('/password/new','ResetPassword@createNewPassword')->name('instructor.newpassword');
     Route::post('/password/save','ResetPassword@savePassword')->name('instructor.savePassword');
 
