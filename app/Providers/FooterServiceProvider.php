@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use App\Course;
+use App\Contact;
 use App\Category;
 use Illuminate\Support\ServiceProvider;
 

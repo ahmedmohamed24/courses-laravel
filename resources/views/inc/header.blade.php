@@ -23,8 +23,8 @@
                         <div class="row d-flex justify-content-between align-items-center">
                             <div class="header-info-left">
                                 <ul>
-                                    <li>ahmed@gmail.com</li>
-                                    <li>01010 1010 1010</li>
+                                    <li>{{ $contacts['email'] }}</li>
+                                    <li>{{ $contacts['phone'] }}</li>
                                 </ul>
                             </div>
                             <div class="header-info-right">
@@ -65,13 +65,13 @@
             <div class="header-bottom header-sticky">
                 <!-- Logo -->
                 <div class="logo d-none d-lg-block">
-                    <a href="{{ route('home') }}"><img src="{{ asset('assets/img/logo/logo.png') }}" alt="Logo Egy courses"></a>
+                    <a href="{{ route('home') }}"><img src='{{ asset("assets/img/logo/".$logo['logo']) }}' alt="Logo Egy courses"></a>
                 </div>
                 <div class="container">
                     <div class="menu-wrapper">
                         <!-- Logo -->
                         <div class="logo logo2 d-block d-lg-none">
-                            <a href="{{ route('home') }}"><img src="{{ asset('assets/img/logo/logo.png') }}" alt="Logo Egy courses"></a>
+                            <a href="{{ route('home') }}"><img src='{{ asset("assets/img/logo/".$logo['logo']) }}' alt="Logo Egy courses"></a>
                         </div>
                         <!-- Main-menu -->
                         <div class="main-menu d-none d-lg-block">

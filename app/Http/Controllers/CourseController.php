@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Course;
 use App\Category;
+use App\Contact;
+use App\Home;
 use App\Review;
 use App\Instructor;
 use Illuminate\Http\Request;
@@ -13,9 +15,11 @@ use Illuminate\Support\Facades\Validator;
 class CourseController extends Controller
 {
     public function index(){
-        $categories=Category::get()->take(6);
-        $courses=Course::get()->take(3);
-        return view('front.index',["categories"=>$categories,'courses'=>$courses]);
+        $data=[];
+        $data['categories']=Category::get()->take(6);
+        $data['courses']=Course::get()->take(3);
+        $data['home']=Home::get()->first();
+        return view('front.index',["data"=>$data]);
     }
     public function about(){
         return view('front.about');

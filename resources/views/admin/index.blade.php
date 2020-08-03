@@ -7,9 +7,11 @@
 @section('style')
     <style>
         .logoImg{
-            width:200px;
-            height:200px;
-        }    
+            width:100;
+            height:50px;
+            display: block;
+            margin: 15px;
+        }
     </style>
 @endsection
 @section('content')
@@ -21,14 +23,14 @@
         </div>
         <div class="form-group">
             <label for="mainTitle" class="text-primary">Main Title Section</label>
-            
+
             <input type="text" class="form-control" name="mainTitle" id="mainTitle" value="{{ $data->mainTitle }}">
         </div>
         <div class="form-group">
             <label for="secondaryTitle" class="text-primary">Secondary Title Section</label>
             <input type="text" class="form-control" name="secondaryTitle" id="secondaryTitle" value="{{ $data->secondaryTitle }}">
         </div>
-        <img src="{{ public_path("assets/img/logo/$data->logo") }}" class="logoImg" alt="{{ $data->siteName }}">
+        <img src="{{ asset("assets/img/logo/$data->logo") }}" class="logoImg" alt="{{ $data->siteName }}">
         <div class="input-group mb-3">
             <div class="input-group-prepend">
             <span class="input-group-text" id="uploadInput">Upload</span>
@@ -80,12 +82,12 @@
                             var temp=document.createElement('P');
                             temp.innerHTML=data.msg[msg][0];
                             errorContainer.appendChild(temp)
-                           
+
                         }
-                        
+
                     }
                 },
-                
+
             });
         })
     </script>

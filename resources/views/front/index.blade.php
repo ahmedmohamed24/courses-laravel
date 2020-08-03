@@ -24,8 +24,8 @@
                         <div class="row align-items-center">
                             <div class="col-xl-6 col-lg-7 col-md-8">
                                 <div class="hero__caption">
-                                    <span data-animation="fadeInLeft" data-delay=".2s">Popular Online Courses</span>
-                                    <h1 data-animation="fadeInLeft" data-delay=".4s">The New Way To Learn Properly in With Us!</h1>
+                                    <span data-animation="fadeInLeft" data-delay=".2s">{{ $data['home']->mainTitle }}</span>
+                                    <h1 data-animation="fadeInLeft" data-delay=".4s">{{ $data['home']['secondaryTitle'] }}</h1>
                                     <!-- Hero-btn -->
                                     <div class="hero__btn">
                                         <a href="{{ route('student.log') }}" class="btn hero-btn"  data-animation="fadeInLeft" data-delay=".8s">Get Started</a>
@@ -79,7 +79,7 @@
                 </div>
                 <div class="row">
 
-                    @foreach ($categories as $category)
+                    @foreach ($data['categories'] as $category)
                         <div class="col-lg-4 col-md-6 col-sm-6 equal">
                             <div class="single-cat mb-50 h-100 w-100">
                                 <div class="cat-icon">
@@ -170,7 +170,7 @@
                 </div>
             </div>
             <div class="row">
-                @foreach ($courses as $course)
+                @foreach ($data['courses'] as $course)
                 <div class="col-xl-4 col-lg-4 col-md-6 equal ">
                     <!-- Single course -->
                     <div class="single-course mb-70 h-100 ">

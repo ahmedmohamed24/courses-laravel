@@ -167,6 +167,7 @@ return [
          */
         Laravel\Socialite\SocialiteServiceProvider::class,
         App\Providers\FooterServiceProvider::class,
+        App\Providers\HeaderServiceProvider::class,
         /*
          * Application Service Providers...
          */
