@@ -20,6 +20,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/','CourseController@index')->name('home');
 Route::get('/about','CourseController@about')->name('about');
+Route::post('/email/send','EmailController@send')->name('sendFeedback');
 
 Route::group(['prefix' => 'course'], function () {
     Route::get('/all','CourseController@getCourses')->name('courses');

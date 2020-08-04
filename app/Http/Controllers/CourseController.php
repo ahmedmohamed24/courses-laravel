@@ -53,7 +53,8 @@ class CourseController extends Controller
         return view('front.instructor',["instructor"=>$instructor]);
     }
     public function contact(){
-        return view('front.contact');
+        $data=Contact::get()->first();
+        return view('front.contact',['data'=>$data]);
 
     }
     public function getCategories(){
