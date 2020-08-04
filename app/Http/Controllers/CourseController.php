@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Course;
-use App\Category;
-use App\Contact;
 use App\Home;
+use App\About;
+use App\Course;
 use App\Review;
+use App\Contact;
+use App\Category;
 use App\Instructor;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
@@ -22,7 +23,8 @@ class CourseController extends Controller
         return view('front.index',["data"=>$data]);
     }
     public function about(){
-        return view('front.about');
+        $data=About::get();
+        return view('front.about',['data'=>$data]);
     }
     public function getCourses(){
         $courses=Course::paginate(9);

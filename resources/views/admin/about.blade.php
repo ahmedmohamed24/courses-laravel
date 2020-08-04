@@ -8,8 +8,8 @@
     <style>
         .logoImg{
             width:200px;
-            height:200px; 
-        }    
+            height:200px;
+        }
     </style>
 @endsection
 @section('content')
@@ -23,7 +23,8 @@
                 <div class="form-group">
                     <label for="sectionHeader{{$loop->index}}" class="text-primary">Section Header {{ $loop->index }}</label>
                     <input type="text" class="form-control" name="sectionHeader" id="sectionHeader{{$loop->index}}" value="{{ $section->sectionHeader }}">
-                    <input type="text" class="form-control" name="sectionContent"  value="{{ $section->sectionContent }}">
+                    {{-- <input type="text" class="form-control" name="sectionContent"  value="{{ $section->sectionContent }}"> --}}
+                    <textarea name="sectionContent" class="form-control" id="" rows="5">{{ $section->sectionContent }}</textarea>
                     <input type="hidden" name="id"  value="{{ $section->id }}">
                     <button class="btn btn-warning" type="submit">Update</button>
                 </div>
@@ -71,12 +72,12 @@
                             var temp=document.createElement('P');
                             temp.innerHTML=data.msg[msg][0];
                             errorContainer.appendChild(temp)
-                           
+
                         }
-                        
+
                     }
                 },
-                
+
             });
         }
     </script>
