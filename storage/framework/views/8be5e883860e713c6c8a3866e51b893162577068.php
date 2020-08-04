@@ -1,20 +1,19 @@
-@extends('front/layout/frontLayout')
-@section('title')
+<?php $__env->startSection('title'); ?>
     Home Page
-@endsection
-@section('content')
+<?php $__env->stopSection(); ?>
+<?php $__env->startSection('content'); ?>
 
 <main>
-        {{-- for admin redirect after entering wrong data --}}
-        @if (session()->has('isNotAdmin'))
+        
+        <?php if(session()->has('isNotAdmin')): ?>
             <div class="alert alert-danger">You are Not an admin</div>
             <?php session()->forget('isNotAdmin')  ?>
-        @endif
-        {{-- for instructor trying to get to dashboard before activating the email --}}
-        @if (session()->has('MustVerifyEmail'))
+        <?php endif; ?>
+        
+        <?php if(session()->has('MustVerifyEmail')): ?>
             <div class="alert alert-danger text-center">Please, visit your email to verify your account</div>
             <?php session()->forget('MustVerifyEmail')  ?>
-        @endif
+        <?php endif; ?>
         <!--? slider Area Start-->
         <div class="slider-area ">
             <div class="slider-active">
@@ -24,11 +23,11 @@
                         <div class="row align-items-center">
                             <div class="col-xl-6 col-lg-7 col-md-8">
                                 <div class="hero__caption">
-                                    <span data-animation="fadeInLeft" data-delay=".2s">{{ $data['home']->mainTitle }}</span>
-                                    <h1 data-animation="fadeInLeft" data-delay=".4s">{{ $data['home']['secondaryTitle'] }}</h1>
+                                    <span data-animation="fadeInLeft" data-delay=".2s"><?php echo e($data['home']->mainTitle); ?></span>
+                                    <h1 data-animation="fadeInLeft" data-delay=".4s"><?php echo e($data['home']['secondaryTitle']); ?></h1>
                                     <!-- Hero-btn -->
                                     <div class="hero__btn">
-                                        <a href="{{ route('student.log') }}" class="btn hero-btn"  data-animation="fadeInLeft" data-delay=".8s">Get Started</a>
+                                        <a href="<?php echo e(route('student.log')); ?>" class="btn hero-btn"  data-animation="fadeInLeft" data-delay=".8s">Get Started</a>
                                     </div>
                                 </div>
                             </div>
@@ -50,7 +49,7 @@
                                     <h1 data-animation="fadeInLeft" data-delay=".4s">The New Way To Learn Properly in With Us!</h1>
                                     <!-- Hero-btn -->
                                     <div class="hero__btn">
-                                        <a href="{{ route('student.log') }}" class="btn hero-btn"  data-animation="fadeInLeft" data-delay=".8s">Get Started</a>
+                                        <a href="<?php echo e(route('student.log')); ?>" class="btn hero-btn"  data-animation="fadeInLeft" data-delay=".8s">Get Started</a>
                                     </div>
                                 </div>
                             </div>
@@ -79,25 +78,25 @@
                 </div>
                 <div class="row">
 
-                    @foreach ($data['categories'] as $category)
+                    <?php $__currentLoopData = $data['categories']; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $category): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                         <div class="col-lg-4 col-md-6 col-sm-6 equal">
                             <div class="single-cat mb-50 h-100 w-100">
                                 <div class="cat-icon">
-                                    <img src='{{ asset("uploads/categories/$category->img") }}' alt="{{ $category->name }}">
+                                    <img src='<?php echo e(asset("uploads/categories/$category->img")); ?>' alt="<?php echo e($category->name); ?>">
                                 </div>
                                 <div class="cat-cap">
-                                    <h5><a  href="{{ route('cat',$category->id) }}">{{ $category->name }}</a></h5>
-                                    <a href="{{ route('cat',$category->id) }}" class="read-more1">Discover ></a>
+                                    <h5><a  href="<?php echo e(route('cat',$category->id)); ?>"><?php echo e($category->name); ?></a></h5>
+                                    <a href="<?php echo e(route('cat',$category->id)); ?>" class="read-more1">Discover ></a>
                                 </div>
                             </div>
                         </div>
-                    @endforeach
+                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                 </div>
                 <!-- Section Button -->
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="browse-btn2 text-center mt-4">
-                            <a href="{{ route('cats') }}" class="btn">Find More Categories</a>
+                            <a href="<?php echo e(route('cats')); ?>" class="btn">Find More Categories</a>
                         </div>
                     </div>
                 </div>
@@ -170,19 +169,20 @@
                 </div>
             </div>
             <div class="row">
-                @foreach ($data['courses'] as $course)
+                <?php $__currentLoopData = $data['courses']; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $course): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                 <div class="col-xl-4 col-lg-4 col-md-6 equal ">
                     <!-- Single course -->
                     <div class="single-course mb-70 h-100 ">
                         <div class="course-img">
-                            <img src="{{ asset("uploads/courses/$course->img") }}" alt="{{ $course->title }}">
+                            <img src="<?php echo e(asset("uploads/courses/$course->img")); ?>" alt="<?php echo e($course->title); ?>">
                         </div>
                         <div class="course-caption">
                             <div class="course-cap-top">
-                                <h4><a href="{{ route('course',$course->id) }}">{{ Str::limit($course->title,15) }}</a></h4>
+                                <h4><a href="<?php echo e(route('course',$course->id)); ?>"><?php echo e(Str::limit($course->title,15)); ?></a></h4>
                             </div>
                             <p>
-                                {{ Str::limit($course->briefDesc,100) }}
+                                <?php echo e(Str::limit($course->briefDesc,100)); ?>
+
                             </p>
                             <div class="course-cap-mid d-flex justify-content-between">
                                 <div class="course-ratting">
@@ -198,29 +198,29 @@
                                             $reviewNum=floor($temp/$reviews);
                                         }
                                     ?>
-                                    @for ($i = 0; $i < $reviewNum; $i++)
+                                    <?php for($i = 0; $i < $reviewNum; $i++): ?>
                                         <i class="fas fa-star"></i>
-                                    @endfor
-                                    @for ($i = $reviewNum; $i < 5; $i++)
+                                    <?php endfor; ?>
+                                    <?php for($i = $reviewNum; $i < 5; $i++): ?>
                                         <i class="far fa-star"></i>
-                                    @endfor
+                                    <?php endfor; ?>
                                 </div>
-                                <ul><li>{{ $reviews }} Reviews</li></ul>
+                                <ul><li><?php echo e($reviews); ?> Reviews</li></ul>
                             </div>
                             <div class="course-cap-bottom d-flex justify-content-between">
 
-                                <span>Price: {{ $course->price }}$
+                                <span>Price: <?php echo e($course->price); ?>$
                             </div>
                         </div>
                     </div>
                 </div>
-                @endforeach
+                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
 
             </div>
             <div class="row">
                 <div class="col-lg-12">
                     <div class="browse-btn2 text-center mt-4">
-                        <a href="{{ route('courses') }}" class="btn">Find More Courses</a>
+                        <a href="<?php echo e(route('courses')); ?>" class="btn">Find More Courses</a>
                     </div>
                 </div>
             </div>
@@ -234,4 +234,6 @@
 
 
 
-    @endsection
+    <?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('front/layout/frontLayout', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH /opt/lampp/htdocs/laravel-projects/courses-laravel/resources/views/front/index.blade.php ENDPATH**/ ?>

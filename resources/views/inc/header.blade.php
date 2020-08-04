@@ -5,6 +5,7 @@
     </style>
 @endsection
 <header>
+
     <!-- Header Start -->
     <div class="header-area">
         <div class="main-header ">
