@@ -57,6 +57,7 @@ class StudentController extends Controller
                 'email'=>$request->email,
                 'password'=>Hash::make($request->password),
                 'DOB'=>$request->DOB,
+                'img'=>'user.svg',
             ]);
         }
         Auth('student')->attempt([
