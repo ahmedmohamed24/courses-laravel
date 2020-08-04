@@ -85,17 +85,17 @@
                                     <li><a href="{{ route('about') }}">About</a></li>
                                     <li><a href="{{ route('contact') }}">Contact</a></li>
                                     @if (Auth('instructor')->check())
-                                        <li class="d-lg-none "><a class="" href="{{ route('instructor.dashboard') }}" >{{Str::limit( Auth('instructor')->user()->name, 15, '...') }} <img src="{{ asset('assets/img/user.svg') }}" alt="user Icon"></a></li>
+                                        <li class="d-lg-none "><a class="" href="{{ route('instructor.dashboard') }}" >{{Str::limit( Auth('instructor')->user()->name, 15, '...') }} <img src="{{ asset('assets/img/user.svg') }}" class="ml-2"  alt="user Icon"></a></li>
                                         <li class="d-lg-none "><a class="" href="{{ route('instructor.logout') }}">Logout</a></li>
                                     @elseif(Auth('student')->check())
-                                        <li class="d-lg-none "><a class="" href="{{ route('student.dashboard') }}" >{{Str::limit( Auth('student')->user()->name , 15, '...') }} <img src="{{ asset('assets/img/user.svg') }}" alt="user Icon"></a></li>
+                                        <li class="d-lg-none "><a class="" href="{{ route('student.dashboard') }}" >{{Str::limit( Auth('student')->user()->name , 15, '...') }} <img src="{{ asset('assets/img/user.svg') }}"class="ml-2"  alt="user Icon"></a></li>
                                         <li class="d-lg-none "><a class="" href="{{ route('student.logout') }}">Logout</a></li>
                                     @elseif(Auth('admin')->check())
-                                        <li class="d-lg-none "><a class="" href="{{ route('admin.index') }}" >{{Str::limit( Auth('admin')->user()->name , 15, '...') }} <img src="{{ asset('assets/img/user.svg') }}" alt="user Icon"></a></li>
+                                        <li class="d-lg-none "><a class="" href="{{ route('admin.index') }}" >{{Str::limit( Auth('admin')->user()->name , 15, '...') }} <img src="{{ asset('assets/img/user.svg') }}" class="ml-2" alt="user Icon"></a></li>
                                         <li class="d-lg-none "><a class="" href="{{ route('admin.logout') }}">Logout</a></li>
                                     @else
-                                        <li class="d-lg-none "><a href="{{ route('student.log') }}"><i class="ti-user"></i>Login</a></li>
-                                        <li class="d-lg-none "><a href="{{ route('student.register') }}"><i class="ti-lock"></i>Register</a></li>
+                                        <li class="d-lg-none "><a href="{{ route('student.log') }}"><i class="ti-user"></i> Login</a></li>
+                                        <li class="d-lg-none "><a href="{{ route('student.register') }}"><i class="ti-lock"></i> Register</a></li>
                                     @endif
                                 </ul>
                             </nav>

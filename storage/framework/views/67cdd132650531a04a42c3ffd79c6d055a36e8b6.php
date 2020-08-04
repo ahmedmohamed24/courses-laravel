@@ -85,17 +85,17 @@
                                     <li><a href="<?php echo e(route('about')); ?>">About</a></li>
                                     <li><a href="<?php echo e(route('contact')); ?>">Contact</a></li>
                                     <?php if(Auth('instructor')->check()): ?>
-                                        <li class="d-lg-none "><a class="" href="<?php echo e(route('instructor.dashboard')); ?>" ><?php echo e(Str::limit( Auth('instructor')->user()->name, 15, '...')); ?> <img src="<?php echo e(asset('assets/img/user.svg')); ?>" alt="user Icon"></a></li>
+                                        <li class="d-lg-none "><a class="" href="<?php echo e(route('instructor.dashboard')); ?>" ><?php echo e(Str::limit( Auth('instructor')->user()->name, 15, '...')); ?> <img src="<?php echo e(asset('assets/img/user.svg')); ?>" class="ml-2"  alt="user Icon"></a></li>
                                         <li class="d-lg-none "><a class="" href="<?php echo e(route('instructor.logout')); ?>">Logout</a></li>
                                     <?php elseif(Auth('student')->check()): ?>
-                                        <li class="d-lg-none "><a class="" href="<?php echo e(route('student.dashboard')); ?>" ><?php echo e(Str::limit( Auth('student')->user()->name , 15, '...')); ?> <img src="<?php echo e(asset('assets/img/user.svg')); ?>" alt="user Icon"></a></li>
+                                        <li class="d-lg-none "><a class="" href="<?php echo e(route('student.dashboard')); ?>" ><?php echo e(Str::limit( Auth('student')->user()->name , 15, '...')); ?> <img src="<?php echo e(asset('assets/img/user.svg')); ?>"class="ml-2"  alt="user Icon"></a></li>
                                         <li class="d-lg-none "><a class="" href="<?php echo e(route('student.logout')); ?>">Logout</a></li>
                                     <?php elseif(Auth('admin')->check()): ?>
-                                        <li class="d-lg-none "><a class="" href="<?php echo e(route('admin.index')); ?>" ><?php echo e(Str::limit( Auth('admin')->user()->name , 15, '...')); ?> <img src="<?php echo e(asset('assets/img/user.svg')); ?>" alt="user Icon"></a></li>
+                                        <li class="d-lg-none "><a class="" href="<?php echo e(route('admin.index')); ?>" ><?php echo e(Str::limit( Auth('admin')->user()->name , 15, '...')); ?> <img src="<?php echo e(asset('assets/img/user.svg')); ?>" class="ml-2" alt="user Icon"></a></li>
                                         <li class="d-lg-none "><a class="" href="<?php echo e(route('admin.logout')); ?>">Logout</a></li>
                                     <?php else: ?>
-                                        <li class="d-lg-none "><a href="<?php echo e(route('student.log')); ?>"><i class="ti-user"></i>Login</a></li>
-                                        <li class="d-lg-none "><a href="<?php echo e(route('student.register')); ?>"><i class="ti-lock"></i>Register</a></li>
+                                        <li class="d-lg-none "><a href="<?php echo e(route('student.log')); ?>"><i class="ti-user"></i> Login</a></li>
+                                        <li class="d-lg-none "><a href="<?php echo e(route('student.register')); ?>"><i class="ti-lock"></i> Register</a></li>
                                     <?php endif; ?>
                                 </ul>
                             </nav>
