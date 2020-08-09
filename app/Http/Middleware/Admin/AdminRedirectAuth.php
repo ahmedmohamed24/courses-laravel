@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Middleware;
+namespace App\Http\Middleware\Admin;
 
 use Closure;
 
-class InstructorAuth
+class AdminRedirectAuth
 {
     /**
      * Handle an incoming request.
@@ -15,9 +15,9 @@ class InstructorAuth
      */
     public function handle($request, Closure $next)
     {
-        if(Auth('instructor')->check())
-            return $next($request);
-        else
-            return redirect(route('home'));
+        if(Auth('admin')->check()){
+            return redirect(route('admin.index'));
+        }
+        return $next($request);
     }
 }

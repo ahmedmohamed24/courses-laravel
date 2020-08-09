@@ -33,8 +33,3 @@ Route::get('/contact','CourseController@contact')->name('contact');
 Route::get('/cats','CourseController@getCategories')->name('cats');
 Route::get('/cat/{id}','CourseController@getCategory')->name('cat');
 
-
-//Not found
-// Route::fallback(function(){
-//     return abort(404);
-// });

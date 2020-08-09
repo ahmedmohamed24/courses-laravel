@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Middleware;
+namespace App\Http\Middleware\Instructors;
 
 use Closure;
 
-class AdminRedirectAuth
+class InstructorEmailVerifyMiddleware
 {
     /**
      * Handle an incoming request.
@@ -15,8 +15,9 @@ class AdminRedirectAuth
      */
     public function handle($request, Closure $next)
     {
-        if(Auth('admin')->check()){
-            return redirect(route('admin.index'));
+        if(Auth('instructor')->user()->email_verified_at === null){
+            session()->put('MustVerifyEmail','hello');
+            return redirect(route('home'));
         }
         return $next($request);
     }

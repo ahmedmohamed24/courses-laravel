@@ -1,12 +1,13 @@
 <?php
 
-namespace App\Http\Middleware;
+namespace App\Http\Middleware\API;
 
 use Closure;
-use Illuminate\Support\Facades\Auth;
+use App\traits\AjaxResponse;
 
-class StudentAuth
+class CheckApiPassword
 {
+    use AjaxResponse;
     /**
      * Handle an incoming request.
      *
@@ -16,8 +17,9 @@ class StudentAuth
      */
     public function handle($request, Closure $next)
     {
-        if(! Auth('student')->check())
-            return redirect(route('home'));
+        if($request->apiPassword !== env("API_PASSWORD",'ahmed12345')){
+            return $this->response(false,"You are not authenticated to access this API");
+        }
         return $next($request);
     }
 }

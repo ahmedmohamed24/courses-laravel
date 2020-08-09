@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Middleware;
+namespace App\Http\Middleware\Instructors;
 
 use Closure;
 
-class studentRedirectAuth
+class InstructorRedirectAuth
 {
     /**
      * Handle an incoming request.
@@ -15,7 +15,7 @@ class studentRedirectAuth
      */
     public function handle($request, Closure $next)
     {
-        if( ! auth('student')->check())
+        if( ! auth('instructor')->check())
             return $next($request);
         return redirect(route('home'));
     }

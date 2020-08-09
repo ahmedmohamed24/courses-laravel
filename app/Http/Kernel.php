@@ -2,7 +2,9 @@
 
 namespace App\Http;
 
+use GuzzleHttp\Middleware;
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
+use Illuminate\Support\Facades\Http;
 
 class Kernel extends HttpKernel
 {
@@ -55,15 +57,27 @@ class Kernel extends HttpKernel
     protected $routeMiddleware = [
         'auth' => \App\Http\Middleware\Authenticate::class,
         //admin
-        'adminAuth' => \App\Http\Middleware\AdminAuth::class,
-        'adminRedirect' => \App\Http\Middleware\AdminRedirectAuth::class,
+        'adminAuth' => \App\Http\Middleware\Admin\AdminAuth::class,
+        'adminRedirect' => \App\Http\Middleware\Admin\AdminRedirectAuth::class,
         //student
-        'studentAuth' => \App\Http\Middleware\StudentAuth::class,
-        'studentRedirect' => \App\Http\Middleware\studentRedirectAuth::class,
+        'studentAuth' => \App\Http\Middleware\Students\StudentAuth::class,
+        'studentRedirect' => \App\Http\Middleware\Students\StudentRedirectAuth::class,
         //instructor
-        'instructorAuth' => \App\Http\Middleware\InstructorAuth::class,
-        'instructorRedirect' => \App\Http\Middleware\InstructorRedirectAuth::class,
-        'InstructorEmailVerifyMiddleware'=> \App\Http\Middleware\InstructorEmailVerifyMiddleware::class,
+        'instructorAuth' => \App\Http\Middleware\Instructors\InstructorAuth::class,
+        'instructorRedirect' => \App\Http\Middleware\Instructors\InstructorRedirectAuth::class,
+        'InstructorEmailVerifyMiddleware'=> \App\Http\Middleware\Instructors\InstructorEmailVerifyMiddleware::class,
+        'checkInstructorToken'=>\App\Http\Middleware\Instructors\CheckInstructorToken::class,
+
+        //API
+        'checkApiPassword'=>\App\Http\Middleware\API\CheckApiPassword::class,
+
+        //mcamara for translation
+        'localize'                => \Mcamara\LaravelLocalization\Middleware\LaravelLocalizationRoutes::class,
+        'localizationRedirect'    => \Mcamara\LaravelLocalization\Middleware\LaravelLocalizationRedirectFilter::class,
+        'localeSessionRedirect'   => \Mcamara\LaravelLocalization\Middleware\LocaleSessionRedirect::class,
+        'localeCookieRedirect'    => \Mcamara\LaravelLocalization\Middleware\LocaleCookieRedirect::class,
+        'localeViewPath'          => \Mcamara\LaravelLocalization\Middleware\LaravelLocalizationViewPath::class,
+
         'auth.basic' => \Illuminate\Auth\Middleware\AuthenticateWithBasicAuth::class,
         'bindings' => \Illuminate\Routing\Middleware\SubstituteBindings::class,
         'cache.headers' => \Illuminate\Http\Middleware\SetCacheHeaders::class,
@@ -73,5 +87,6 @@ class Kernel extends HttpKernel
         'signed' => \Illuminate\Routing\Middleware\ValidateSignature::class,
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
+
     ];
 }

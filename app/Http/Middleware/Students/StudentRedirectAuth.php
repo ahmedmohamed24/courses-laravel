@@ -1,11 +1,10 @@
 <?php
 
-namespace App\Http\Middleware;
+namespace App\Http\Middleware\Students;
 
 use Closure;
-use Illuminate\Support\Facades\Auth;
 
-class AdminAuth
+class StudentRedirectAuth
 {
     /**
      * Handle an incoming request.
@@ -16,11 +15,8 @@ class AdminAuth
      */
     public function handle($request, Closure $next)
     {
-        if(Auth('admin')->check()){
+        if( ! auth('student')->check())
             return $next($request);
-        }
-        session('isNotAdmin',true);
         return redirect(route('home'));
-
     }
 }
