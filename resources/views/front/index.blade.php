@@ -231,7 +231,7 @@
 
     </main>
 
-
+@include('inc/testimonial')
 
 
 

@@ -13,11 +13,6 @@
       <path>
         <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
         <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
-        <item name="GROUP_NODE:heroku" type="e8cecc67:BranchNodeDescriptor" />
-      </path>
-      <path>
-        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
-        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
         <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
       </path>
     </expand>
@@ -25,21 +20,30 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ab098de0-84d0-4b71-b033-027435ce1bc8" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/app/Http/Kernel.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Kernel.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Middleware/AdminAuth.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Middleware/AdminRedirectAuth.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Middleware/Authenticate.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Middleware/Authenticate.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Middleware/InstructorAuth.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Middleware/InstructorEmailVerifyMiddleware.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Middleware/InstructorRedirectAuth.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Middleware/StudentAuth.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Middleware/studentRedirectAuth.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Instructor.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Instructor.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/auth.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/auth.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/notFound.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/notFound.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/api.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/api.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/courses-laravel.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/courses-laravel.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Providers/TestimonialServiceProvider.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Providers/TestimonialServiceProvider.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/uploads/students/0ZcoI80ePRmvzfdFCPWRYL5bs7CrHWazVopQ2dKS.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/uploads/students/1552990708206790.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/uploads/students/24bat9uJ3HglSEBsiFbHWO2PZ4myi7h6Ba79zsfg.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/uploads/students/5f0c5f7fb1be5.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/uploads/students/5f0c5fed0ccc0.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/uploads/students/GPpBqo3IalL7w37eFdvp0Iq3lYeMuWs060Cvqt6v.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/uploads/students/TmuIGxtgkl4RLu36Z2F4UKYVr3PLLMILQJRNVUBA.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/uploads/students/VngKBlp6EweH30X7DnZEQcr22EGxQjHcPR4ohjKt.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/uploads/students/fsAQz2cqIAzvmiAOwjs8iqDu8pyQ15M9WM49yLfo.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/uploads/students/gME4IQG3HPcgwNIxSoVxTdQM6gCLtLek32YpAEVw.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/uploads/students/student-5f0c6154d4007.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/uploads/students/student-5f0c61656692d.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/uploads/students/ySIl1RsNhkMy0evPPBVtCG0fgyvDd0WvITt5aPue.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/front/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/front/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/front/layout/frontLayout.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/front/layout/frontLayout.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/inc/testimonial.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/inc/testimonial.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/storage/framework/views/32518a9a7024a1f752b62a24fc8105589aec7513.php" beforeDir="false" afterPath="$PROJECT_DIR$/storage/framework/views/32518a9a7024a1f752b62a24fc8105589aec7513.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/storage/framework/views/8be5e883860e713c6c8a3866e51b893162577068.php" beforeDir="false" afterPath="$PROJECT_DIR$/storage/framework/views/8be5e883860e713c6c8a3866e51b893162577068.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/storage/framework/views/9edf493055ffba9191d40eed8a8f8761efd171f9.php" beforeDir="false" afterPath="$PROJECT_DIR$/storage/framework/views/9edf493055ffba9191d40eed8a8f8761efd171f9.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -171,6 +175,7 @@
       <path value="$PROJECT_DIR$/vendor/phar-io/version" />
       <path value="$PROJECT_DIR$/vendor/phar-io/manifest" />
       <path value="$PROJECT_DIR$/vendor/webmozart/assert" />
+      <path value="$PROJECT_DIR$/vendor/mcamara/laravel-localization" />
     </include_path>
   </component>
   <component name="ProjectId" id="1fjD5P0zGhczM6DkZGEXJZXtbrr" />
@@ -183,7 +188,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="settings.editor.selected.configurable" value="preferences.customizations" />
+    <property name="settings.editor.selected.configurable" value="web-ide.project.structure" />
   </component>
   <component name="RunManager" selected="JavaScript Debug.InstructorRedirectAuth.php">
     <configuration name="InstructorRedirectAuth.php" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/courses-laravel/Http/Middleware/Instructors/InstructorRedirectAuth.php" useBuiltInWebServerPort="true">
@@ -219,6 +224,10 @@
       <workItem from="1596726445901" duration="260000" />
       <workItem from="1596745345029" duration="1032000" />
       <workItem from="1596754121503" duration="2000" />
+      <workItem from="1597235495470" duration="1650000" />
+      <workItem from="1597237158607" duration="1418000" />
+      <workItem from="1597238599291" duration="2515000" />
+      <workItem from="1597249088972" duration="103000" />
     </task>
     <servers />
   </component>
@@ -238,10 +247,11 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="369" y="201" width="617" height="357" key="#Notifications" timestamp="1596724268665">
-      <screen x="0" y="27" width="1366" height="699" />
+    <state x="369" y="202" width="617" height="357" key="#Notifications" timestamp="1597237173864">
+      <screen x="0" y="27" width="1366" height="703" />
     </state>
     <state x="369" y="201" width="617" height="357" key="#Notifications/0.27.1366.699@0.27.1366.699" timestamp="1596724268665" />
+    <state x="369" y="202" key="#Notifications/0.27.1366.703@0.27.1366.703" timestamp="1597237173864" />
     <state x="294" y="27" width="767" height="699" key="#PHP" timestamp="1596725310637">
       <screen x="0" y="27" width="1366" height="699" />
     </state>
@@ -254,6 +264,10 @@
       <screen x="0" y="27" width="1366" height="699" />
     </state>
     <state x="438" y="201" width="480" height="357" key="ExperimentsDialog/0.27.1366.699@0.27.1366.699" timestamp="1596726432961" />
+    <state x="427" y="122" width="501" height="520" key="FileChooserDialogImpl" timestamp="1597238535567">
+      <screen x="0" y="27" width="1366" height="703" />
+    </state>
+    <state x="427" y="122" width="501" height="520" key="FileChooserDialogImpl/0.27.1366.703@0.27.1366.703" timestamp="1597238535567" />
     <state width="1107" height="153" key="GridCell.Tab.0.bottom" timestamp="1596745571524">
       <screen x="0" y="27" width="1366" height="701" />
     </state>
@@ -270,10 +284,11 @@
       <screen x="0" y="27" width="1366" height="701" />
     </state>
     <state width="1107" height="153" key="GridCell.Tab.0.right/0.27.1366.701@0.27.1366.701" timestamp="1596745571524" />
-    <state x="248" y="27" width="1042" height="699" key="SettingsEditor" timestamp="1596725814069">
-      <screen x="0" y="27" width="1366" height="699" />
+    <state x="248" y="27" width="1014" height="703" key="SettingsEditor" timestamp="1597237365908">
+      <screen x="0" y="27" width="1366" height="703" />
     </state>
     <state x="248" y="27" width="1042" height="699" key="SettingsEditor/0.27.1366.699@0.27.1366.699" timestamp="1596725814069" />
+    <state x="248" y="27" width="1014" height="703" key="SettingsEditor/0.27.1366.703@0.27.1366.703" timestamp="1597237365908" />
     <state width="522" height="446" key="SwitcherDM" timestamp="1596726016697">
       <screen x="0" y="27" width="1366" height="699" />
     </state>
@@ -282,9 +297,10 @@
       <screen x="0" y="27" width="1366" height="699" />
     </state>
     <state x="404" y="252" width="629" height="284" key="org.intellij.images.editor.actions.BackgroundImageDialog/0.27.1366.699@0.27.1366.699" timestamp="1596722945569" />
-    <state x="346" y="47" width="672" height="678" key="search.everywhere.popup" timestamp="1596726697254">
-      <screen x="0" y="27" width="1366" height="699" />
+    <state x="346" y="47" width="672" height="682" key="search.everywhere.popup" timestamp="1597235786374">
+      <screen x="0" y="27" width="1366" height="703" />
     </state>
     <state x="346" y="47" width="672" height="678" key="search.everywhere.popup/0.27.1366.699@0.27.1366.699" timestamp="1596726697254" />
+    <state x="346" y="47" width="672" height="682" key="search.everywhere.popup/0.27.1366.703@0.27.1366.703" timestamp="1597235786374" />
   </component>
 </project>

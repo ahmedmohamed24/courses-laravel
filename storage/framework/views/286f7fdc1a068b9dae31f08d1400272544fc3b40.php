@@ -1,12 +1,8 @@
-@extends('front.layout.frontLayout')
-
-
-
-@section('title')
+<?php $__env->startSection('title'); ?>
     About Us
-@endsection
+<?php $__env->stopSection(); ?>
 
-@section('content')
+<?php $__env->startSection('content'); ?>
     <main>
         <!--? Hero Start -->
         <div class="slider-area">
@@ -28,12 +24,12 @@
             <div class="container">
                 <div class="row justify-content-center">
                     <div class="col-lg-8">
-                        @foreach ($data as $section)
+                        <?php $__currentLoopData = $data; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $section): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                             <div class="about-details-cap mb-50">
-                                <h4>{{ $section->sectionHeader  }}</h4>
-                                <p>{{ $section->sectionContent }}</p>
+                                <h4><?php echo e($section->sectionHeader); ?></h4>
+                                <p><?php echo e($section->sectionContent); ?></p>
                             </div>
-                        @endforeach
+                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                     </div>
                 </div>
             </div>
@@ -43,4 +39,6 @@
 
 
 
-@endsection
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('front.layout.frontLayout', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH /opt/lampp/htdocs/laravel-projects/courses-laravel/resources/views/front/about.blade.php ENDPATH**/ ?>

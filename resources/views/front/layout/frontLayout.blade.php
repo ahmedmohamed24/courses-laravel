@@ -5,7 +5,7 @@
 @include('/inc/loader')
 @include('/inc/header')
 @yield('content')
-@include('inc/testimonial')
+
 @include('/inc/footer')
 @include('/inc/backTop')
 @include('/inc/last')

@@ -8,16 +8,16 @@
                     @foreach ($popularReviews as $popularReview)
                     {{-- {!! $popularReview[0]->student()->name !!} --}}
                         <div class="testimonial-icon mb-45 py-4">
-                            <?php $temp=$popularReview[0]->student()->get('img')[0]->img; ?>
+                            <?php $temp=$popularReview['img']; ?>
                             <img src='{{ asset("uploads/students/$temp")  }}' style="width:100px;height:100px" class="ani-btn " alt="">
                             <div class="testimonial-caption text-center">
-                                <p>{{ $popularReview[0]->content }}</p>
+                                <p>{{ $popularReview['content'] }}</p>
                                 <!-- Rattion -->
                                 <div class="testimonial-ratting">
-                                    @for ($i = 0; $i < $popularReview[0]->rate; $i++)
+                                    @for ($i = 0; $i < $popularReview['rate']; $i++)
                                         <i class="fas fa-star"></i>
                                     @endfor
-                                    @for ($i = $popularReview[0]->rate; $i < 5; $i++)
+                                    @for ($i = $popularReview['rate']; $i < 5; $i++)
                                         <i class="far fa-star"></i>
                                     @endfor
                                 </div>

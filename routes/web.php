@@ -32,4 +32,3 @@ Route::group(['prefix' => 'course'], function () {
 Route::get('/contact','CourseController@contact')->name('contact');
 Route::get('/cats','CourseController@getCategories')->name('cats');
 Route::get('/cat/{id}','CourseController@getCategory')->name('cat');
-

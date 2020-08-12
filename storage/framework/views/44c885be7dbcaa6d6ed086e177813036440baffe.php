@@ -29,4 +29,4 @@
         </div>
     </div>
 </div>
-<?php /**PATH /opt/lampp/htdocs/laravel-projects/courses-laravel/resources/views/inc/testimonial.blade.php ENDPATH**/ ?>
+<?php /**PATH /opt/lampp/htdocs/laravel-projects/courses-laravel/resources/views//inc/testimonial.blade.php ENDPATH**/ ?>
