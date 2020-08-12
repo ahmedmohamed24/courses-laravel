@@ -2,13 +2,12 @@
 
 namespace App\Http\Controllers\instructors;
 
-use App\Instructor;
+use App\Models\Instructor;
 use App\Mail\TestMail;
 use App\traits\AjaxResponse;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\App;
 use App\Http\Controllers\Controller;
-use App\ResetPassword as ResetModel;
+use App\Models\ResetPassword as ResetModel;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Validator;

@@ -2,11 +2,9 @@
 
 namespace App\Http\Controllers\instructors;
 
-use App\Course;
-use App\Instructor;
+use App\Models\Instructor;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
 class InstructorAuthController extends Controller

@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
 use Tymon\JWTAuth\Contracts\JWTSubject;
 use Illuminate\Notifications\Notifiable;
@@ -20,7 +20,7 @@ class Instructor extends Authenticatable implements MustVerifyEmail,CanResetPass
         'password', 'remember_token','cardNumber'
     ];
     public function Course(){
-        return $this->hasMany('App\Course');
+        return $this->hasMany('App\Models\Course');
     }
     /**
      * Get the identifier that will be stored in the subject claim of the JWT.

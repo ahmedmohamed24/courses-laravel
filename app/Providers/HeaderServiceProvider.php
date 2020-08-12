@@ -2,8 +2,8 @@
 
 namespace App\Providers;
 
-use App\Home;
-use App\Contact;
+use App\Models\Home;
+use App\Models\Contact;
 use Illuminate\Support\ServiceProvider;
 
 class HeaderServiceProvider extends ServiceProvider

@@ -3,7 +3,6 @@
 namespace App\Http\Middleware\Students;
 
 use Closure;
-use Illuminate\Support\Facades\Auth;
 
 class StudentAuth
 {
@@ -16,7 +15,7 @@ class StudentAuth
      */
     public function handle($request, Closure $next)
     {
-        if(! Auth('student')->check())
+        if(! auth('student')->check())
             return redirect(route('home'));
         return $next($request);
     }

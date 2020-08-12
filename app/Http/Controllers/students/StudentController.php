@@ -2,13 +2,10 @@
 
 namespace App\Http\Controllers\students;
 
-use App\Course;
-use App\Student;
+use App\Models\Student;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
-use Laravel\Socialite\Facades\Socialite;
 class StudentController extends Controller
 {
     public function log(){

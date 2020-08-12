@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers\instructors;
 
-use App\Course;
-use App\Lecture;
-use App\Category;
+use App\Models\Course;
+use App\Models\Lecture;
+use App\Models\Category;
 use Illuminate\Http\Request;
 use App\traits\ImageUploader;
 use App\Http\Controllers\Controller;

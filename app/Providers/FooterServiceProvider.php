@@ -2,9 +2,8 @@
 
 namespace App\Providers;
 
-use App\Course;
-use App\Contact;
-use App\Category;
+use App\Models\Course;
+use App\Models\Category;
 use Illuminate\Support\ServiceProvider;
 
 class FooterServiceProvider extends ServiceProvider

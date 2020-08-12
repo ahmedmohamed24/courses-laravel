@@ -2,10 +2,9 @@
 
 namespace App\Http\Controllers\API;
 
-use App\Course;
+use App\Models\Course;
 use App\Http\Controllers\Controller;
 use App\traits\AjaxResponse;
-use Illuminate\Http\Request;
 
 class CoursesController extends Controller
 {

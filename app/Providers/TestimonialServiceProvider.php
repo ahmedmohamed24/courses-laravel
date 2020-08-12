@@ -2,8 +2,8 @@
 
 namespace App\Providers;
 
-use App\PopularReview;
-use App\Review;
+use App\Models\PopularReview;
+use App\Models\Review;
 use Illuminate\Support\ServiceProvider;
 
 class TestimonialServiceProvider extends ServiceProvider
@@ -26,10 +26,6 @@ class TestimonialServiceProvider extends ServiceProvider
     public function boot()
     {
         view()->composer('inc/testimonial',function($view){
-            // $reviewIDs=PopularReview::select('review_id')->get();
-            // $popularReviews=$reviewIDs->transform(function($key){
-            //     return Review::where('id',$key->review_id)->get();
-            // });
              $data=[];
             $reviewIDs=PopularReview::select('review_id')->get();
             $popularReviews=$reviewIDs->transform(function($key){

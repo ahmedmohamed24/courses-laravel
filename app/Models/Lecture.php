@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -14,6 +14,6 @@ class Lecture extends Model
         'course_id'
     ];
     public function course(){
-        return $this->belongsTo('App\Course');
+        return $this->belongsTo('App\Models\Course');
     }
 }

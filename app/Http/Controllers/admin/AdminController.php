@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers\admin;
 
-use App\Home;
-use App\About;
-use App\Admin;
-use App\Contact;
+use App\Models\Home;
+use App\Models\About;
+use App\Models\Admin;
+use App\Models\Contact;
 use App\traits\AjaxResponse;
 use Illuminate\Http\Request;
 use App\traits\ImageUploader;
@@ -134,7 +134,7 @@ class AdminController extends Controller
     }
 
 
-    //change admin settings and reset password 
+    //change admin settings and reset password
     public function settings()
     {
         return view('admin/settings');

@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers\admin;
 
-use App\Course;
-use App\Category;
+use App\Models\Course;
+use App\Models\Category;
 use Illuminate\Http\Request;
 use App\traits\ImageUploader;
 use App\Http\Controllers\Controller;

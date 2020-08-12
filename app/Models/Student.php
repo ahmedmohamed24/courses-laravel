@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
 
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -17,10 +17,10 @@ class Student extends Authenticatable
         'password', 'remember_token','cardNumber'
     ];
     public function course(){
-        return $this->belongsToMany('App\Course');
+        return $this->belongsToMany('App\Models\Course');
     }
     public function review(){
-        return $this->hasMany('App\Review');
+        return $this->hasMany('App\Models\Review');
     }
     public function getNameAttribute($name){
        return ucfirst($name);

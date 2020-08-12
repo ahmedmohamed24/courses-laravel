@@ -2,15 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use App\Home;
-use App\About;
-use App\Course;
-use App\Review;
-use App\Contact;
-use App\Category;
-use App\Instructor;
+use App\Models\Home;
+use App\Models\About;
+use App\Models\Course;
+use App\Models\Review;
+use App\Models\Contact;
+use App\Models\Category;
+use App\Models\Instructor;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Validator;
 
 
 class CourseController extends Controller

@@ -80,19 +80,19 @@ return [
     'providers' => [
         'users' => [
             'driver' => 'eloquent',
-            'model' => App\User::class,
+            'model' => App\Models\User::class,
         ],
         'admins' => [
             'driver' => 'eloquent',
-            'model' => App\Admin::class,
+            'model' => App\Models\Admin::class,
         ],
         'students' => [
             'driver' => 'eloquent',
-            'model' => App\Student::class,
+            'model' => App\Models\Student::class,
         ],
         'instructors' => [
             'driver' => 'eloquent',
-            'model' => App\Instructor::class,
+            'model' => App\Models\Instructor::class,
         ],
 
         // 'users' => [
