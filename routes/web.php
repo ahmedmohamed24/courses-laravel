@@ -19,7 +19,6 @@ use Illuminate\Support\Facades\Route;
 //courses
 
 Route::get('/','CourseController@index')->name('home');
-Route::get('/about','CourseController@about')->name('about');
 Route::post('/email/send','EmailController@send')->name('sendFeedback');
 
 Route::group(['prefix' => 'course'], function () {
@@ -29,6 +28,12 @@ Route::group(['prefix' => 'course'], function () {
     Route::post('/review/add','CourseController@addReview')->name('course.addReview')->middleware('studentAuth');
 });//->middleware('studentAuth')
 
-Route::get('/contact','CourseController@contact')->name('contact');
 Route::get('/cats','CourseController@getCategories')->name('cats');
 Route::get('/cat/{id}','CourseController@getCategory')->name('cat');
+
+Route::group(['prefix' => LaravelLocalization::setLocale(),'middleware'=>['localeSessionRedirect', 'localizationRedirect', 'localeViewPath' ]], function()
+{
+    Route::get('/contact','CourseController@contact')->name('contact');
+    Route::get('/about','CourseController@about')->name('about');
+
+});

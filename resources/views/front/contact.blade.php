@@ -24,7 +24,7 @@
                 <div class="row">
                     <div class="col-xl-12">
                         <div class="hero-cap hero-cap2 text-center">
-                            <h2>Contact Us</h2>
+                            <h2>{{ trans('messages.Get') }}</h2>
                         </div>
                     </div>
                 </div>
@@ -38,7 +38,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-12">
-                    <h2 class="contact-title">Get in Touch</h2>
+                    <h2 class="contact-title">{{ trans('messages.Get') }}</h2>
                 </div>
                 <div class="col-lg-8">
                     <form class="form-contact contact_form" id="formData">
