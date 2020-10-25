@@ -9,17 +9,18 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Auth\Passwords\CanResetPassword as CanResetPasswordTrait;
 use Illuminate\Contracts\Auth\CanResetPassword as CanResetPasswordInterface;
 
-class Instructor extends Authenticatable implements MustVerifyEmail,CanResetPasswordInterface,JWTSubject
+class Instructor extends Authenticatable implements MustVerifyEmail, CanResetPasswordInterface, JWTSubject
 {
-    use Notifiable,CanResetPasswordTrait;
+    use Notifiable, CanResetPasswordTrait;
     protected $fillable = [
-        'name', 'email', 'password','email_verified_at','cardNumber','cardNumber_verified_at','img',
-        'DOB','about','specialize','experience','country'
+        'name', 'email', 'password', 'email_verified_at', 'cardNumber', 'cardNumber_verified_at', 'img',
+        'DOB', 'about', 'specialize', 'experience', 'country'
     ];
     protected $hidden = [
-        'password', 'remember_token','cardNumber'
+        'password', 'remember_token', 'cardNumber'
     ];
-    public function Course(){
+    public function Course()
+    {
         return $this->hasMany('App\Models\Course');
     }
     /**
@@ -41,5 +42,4 @@ class Instructor extends Authenticatable implements MustVerifyEmail,CanResetPass
     {
         return [];
     }
-
 }

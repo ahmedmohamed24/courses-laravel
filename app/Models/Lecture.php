@@ -6,14 +6,15 @@ use Illuminate\Database\Eloquent\Model;
 
 class Lecture extends Model
 {
-    protected $fillable=[
+    protected $fillable = [
         'title',
         'desc',
         'img',
         'duration',
         'course_id'
     ];
-    public function course(){
+    public function course()
+    {
         return $this->belongsTo('App\Models\Course');
     }
 }

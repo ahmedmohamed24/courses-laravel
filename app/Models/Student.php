@@ -9,24 +9,28 @@ use Illuminate\Notifications\Notifiable;
 class Student extends Authenticatable
 {
     use Notifiable;
+    public $incrementing = true;
     protected $fillable = [
-        'name', 'email', 'password','email_verified_at','cardNumber','cardNumber_verified_at','img',
+        'name', 'email', 'password', 'email_verified_at', 'cardNumber', 'cardNumber_verified_at', 'img',
         'DOB',
     ];
     protected $hidden = [
-        'password', 'remember_token','cardNumber'
+        'password', 'remember_token', 'cardNumber'
     ];
-    public function course(){
+    public function course()
+    {
         return $this->belongsToMany('App\Models\Course');
     }
-    public function review(){
+    public function review()
+    {
         return $this->hasMany('App\Models\Review');
     }
-    public function getNameAttribute($name){
-       return ucfirst($name);
+    public function getNameAttribute($name)
+    {
+        return ucfirst($name);
     }
-    public function setNameAttribute($name){
-        $this->attributes['name']=ucfirst($name);
+    public function setNameAttribute($name)
+    {
+        $this->attributes['name'] = ucfirst($name);
     }
-
 }
