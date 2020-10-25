@@ -8,7 +8,7 @@
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="shortcut icon" type="image/x-icon" href="{{asset('assets/img/logo/logo.png')}}">
-
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
 	<!-- CSS here -->
 	<link rel="stylesheet" href="{{asset('assets') }}/css/bootstrap.min.css">
 	<link rel="stylesheet" href="{{asset('assets') }}/css/owl.carousel.min.css">
