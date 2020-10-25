@@ -12,13 +12,13 @@ class CourseStudentSeeder extends Seeder
      */
     public function run()
     {
-       for($i=1;$i<30;$i++){
-        DB::table('course_student')->insert([
-            'course_id'=>  rand(1,86),
-            'student_id'=> rand(1,20),
-            'created_at'=> now(),
-            'updated_at'=>now()
-        ]);
-       }
+        for ($i = 1; $i < 60; $i++) {
+            DB::table('course_student')->insert([
+                'course_id' =>  rand(1, 140),
+                'student_id' => rand(1, 100),
+                'created_at' => now(),
+                'updated_at' => now()
+            ]);
+        }
     }
 }

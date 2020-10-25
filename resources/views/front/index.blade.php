@@ -207,7 +207,7 @@
                         <div class="col-lg-4 col-md-6 col-sm-6 equal">
                             <div class="single-cat mb-50 h-100 w-100">
                                 <div class="cat-icon">
-                                    <img src='{{ asset("uploads/categories/$category->img") }}' alt="{{ $category->name }}">
+                                    <img class="img-fluid" src='{{ asset("uploads/categories/$category->img") }}' alt="{{ $category->name }}">
                                 </div>
                                 <div class="cat-cap">
                                     <h5><a  href="{{ route('cat',$category->id) }}">{{ $category->name }}</a></h5>

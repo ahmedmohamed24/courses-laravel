@@ -207,7 +207,7 @@
                         <div class="col-lg-4 col-md-6 col-sm-6 equal">
                             <div class="single-cat mb-50 h-100 w-100">
                                 <div class="cat-icon">
-                                    <img src='<?php echo e(asset("uploads/categories/$category->img")); ?>' alt="<?php echo e($category->name); ?>">
+                                    <img class="img-fluid" src='<?php echo e(asset("uploads/categories/$category->img")); ?>' alt="<?php echo e($category->name); ?>">
                                 </div>
                                 <div class="cat-cap">
                                     <h5><a  href="<?php echo e(route('cat',$category->id)); ?>"><?php echo e($category->name); ?></a></h5>
