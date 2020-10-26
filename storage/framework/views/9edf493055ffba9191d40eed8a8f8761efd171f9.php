@@ -1,5 +1,5 @@
 
-<div class="testimonial-area fix pt-180 pb-180 section-bg" data-background="assets/img/gallery/section_bg03.png">
+<div class="testimonial-area fix pt-180  section-bg" data-background="assets/img/gallery/section_bg03.png">
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-xl-8 col-lg-9 col-md-9">

@@ -16,6 +16,7 @@
         <div class="alet alert-success my-4 container text-center p-4">Admin Added successfully</div>
     @endif
     @include('admin/inc/error')
+    <h1 class="text-center text-info my-5">Add new admin</h1>
     <form class="my-5 container" method="POST" action="{{ route('admin.save') }}">
         @csrf
 

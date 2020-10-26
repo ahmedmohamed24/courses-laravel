@@ -17,7 +17,7 @@
                     <!-- Single course -->
                     <div class="single-course mb-70 h-100 ">
                         <div class="course-img">
-                            <img src="{{ asset("uploads/courses/$course->img") }}" alt="{{ $course->title }}">
+                            <img src="{{ asset("uploads/courses/$course->img") }}" class="img-fluid" alt="{{ $course->title }}">
                         </div>
                         <div class="course-caption container-fluid my-3">
                             <div class="course-cap-top">
@@ -60,7 +60,7 @@
 
             </div>
         </section>
-       
+
     </main>
     <div class="d-flex justify-content-center align-items-center mb-4">
         {!! $courses->render() !!}

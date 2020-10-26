@@ -7,7 +7,7 @@
 
 
 @section('content')
-
+    <h1 class="text-info my-5 text-center">FORGET PASSWORD</h1>
     <form  id="reset" class="container my-5" >
         @csrf
         <div class="form-group">
