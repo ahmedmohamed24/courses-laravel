@@ -12,7 +12,7 @@ class CourseStudentSeeder extends Seeder
      */
     public function run()
     {
-        for ($i = 1; $i < 60; $i++) {
+        for ($i = 1; $i < 100; $i++) {
             DB::table('course_student')->insert([
                 'course_id' =>  rand(1, 140),
                 'student_id' => rand(1, 100),
