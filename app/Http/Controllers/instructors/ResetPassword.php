@@ -16,78 +16,78 @@ use Illuminate\Support\Facades\Validator;
 class ResetPassword extends Controller
 {
     use AjaxResponse;
-    public function index(){
+    public function index()
+    {
         return view('instructor.reset');
     }
     public function sendResetMail(Request $request)
     {
-        $validators=Validator::make($request->all(),
-        [
-            'email'=>'required|email|exists:instructors,email'
-        ]);
-        if($validators->fails())
-            return $this->response(false,$validators->messages());
+        $validators = Validator::make(
+            $request->all(),
+            [
+                'email' => 'required|email|exists:instructors,email'
+            ]
+        );
+        if ($validators->fails())
+            return $this->response(false, $validators->errors());
         //check if he tried this before (1 hour)
-        $temp=ResetModel::where('email',$request->email)->get()->last();
-        if($temp !== null){
+        $temp = ResetModel::where('email', $request->email)->get()->last();
+        if ($temp !== null) {
             //not resetting password for the first time
-            $delay=(strtotime(date("Y-m-d H:i:s"))-strtotime($temp->created_at))/60;//in minutes
-            if($delay < 10){
-                session()->flash('isNotWaited',true);
-                return  $this->response(400,"Please visite your email or wait 10 minutes to resend");
+            $delay = (strtotime(date("Y-m-d H:i:s")) - strtotime($temp->created_at)) / 60; //in minutes
+            if ($delay < 10) {
+                session()->flash('isNotWaited', true);
+                return  $this->response(400, "Please visite your email or wait 10 minutes to resend");
             }
         }
 
         //generate random token
         $token = bin2hex(random_bytes(50));
         ResetModel::create([
-            'email'=>$request->email,
-            'token'=>$token,
-            'updated_at'=>null,
+            'email' => $request->email,
+            'token' => $token,
+            'updated_at' => null,
         ]);
         Mail::to($request->email)->send(new TestMail($token));
-        return $this->response(true,"Email send successfully, please check your email");
+        return $this->response(true, "Email send successfully, please check your email");
     }
     public function reset($token)
     {
-        $result=ResetModel::where('token',$token)->get()->last();
-        if($result=== null){
+        $result = ResetModel::where('token', $token)->get()->last();
+        if ($result === null) {
             //Token is not right
-            return abort(404,"This link is no more available ");
-        }
-        else if($result->updated_at === null ){
+            return abort(404, "This link is no more available ");
+        } else if ($result->updated_at === null) {
             //this link used before
-            return abort(404,"This link is no more available ");
+            return abort(404, "This link is no more available ");
         }
-        $delay=(strtotime(date("Y-m-d H:i:s"))-strtotime($result->created_at))/60;
-        if($delay > 10){
+        $delay = (strtotime(date("Y-m-d H:i:s")) - strtotime($result->created_at)) / 60;
+        if ($delay > 10) {
             //this link sent before 10 minutes
-            return abort(404,"This link is no more available ");
+            return abort(404, "This link is no more available ");
         }
-        session()->put('emailToBeReset',$result->email);
+        session()->put('emailToBeReset', $result->email);
         return redirect(route('instructor.newpassword'));
-
     }
     public function createNewPassword()
     {
-        if(! session()->has('emailToBeReset'))
-            return abort(404,"Not Found");
+        if (!session()->has('emailToBeReset'))
+            return abort(404, "Not Found");
         return view('instructor.createPass');
     }
     public function savePassword(Request $request)
     {
-        if(!session()->has('emailToBeReset'))
-            return abort(404,"Not Found");
+        if (!session()->has('emailToBeReset'))
+            return abort(404, "Not Found");
         $request->validate([
-            'password'=>'required|string',
-            'password-c'=>'required|string|same:password'
+            'password' => 'required|string',
+            'password-c' => 'required|string|same:password'
         ]);
-        $instructor=Instructor::where('email',session()->get('emailToBeReset'))->get()->first();
-        if($instructor===null)
-            return abort(500,"Serve Error");
-        Instructor::findOrFail($instructor->id)->update(['password'=>Hash::make($request->password)]);
-        Auth('instructor')->attempt(['email'=>$instructor->email,'password'=>$request->password]);
+        $instructor = Instructor::where('email', session()->get('emailToBeReset'))->get()->first();
+        if ($instructor === null)
+            return abort(500, "Serve Error");
+        Instructor::findOrFail($instructor->id)->update(['password' => Hash::make($request->password)]);
+        Auth('instructor')->attempt(['email' => $instructor->email, 'password' => $request->password]);
         return redirect(route('instructor.dashboard'));
-
     }
 }

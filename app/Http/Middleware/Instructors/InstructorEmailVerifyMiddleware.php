@@ -15,10 +15,10 @@ class InstructorEmailVerifyMiddleware
      */
     public function handle($request, Closure $next)
     {
-        if(Auth('instructor')->user()->email_verified_at === null){
-            session()->put('MustVerifyEmail','hello');
-            return redirect(route('home'));
-        }
+        // if(Auth('instructor')->user()->email_verified_at === null){
+        //     session()->put('MustVerifyEmail','hello');
+        //     return redirect(route('home'));
+        // }
         return $next($request);
     }
 }
