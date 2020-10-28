@@ -9,7 +9,7 @@
   npm install && npm run dev
 ```
 ### Data base 
-#### There are two aproches to use the database 
+#### There are two approaches to use the database 
 1. Importing the database file in phpmyadmin (or any other database software)
    
 2. using the credentials provided in the .env file to contact the remote database on heroku
@@ -37,8 +37,9 @@
 ## for login to admin dashboar use the following credentials 
 
 visit [admin link](http://egy-courses.herokuapp.com/admin/login) and enter these credentials 
-- admin@gmail.com
-- 123456
+> admin@gmail.com
+
+> 123456
 ## for more Information and test live
 Visit the website live at [egy](https://egy-courses.herokuapp.com/)
 
